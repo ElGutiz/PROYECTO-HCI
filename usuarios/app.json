@@ -1,0 +1,12 @@
+{
+  "name": "usuarios",
+  "displayName": "usuarios",
+  "expo": {
+    "name": "usuarios",
+    "slug": "usuarios",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
