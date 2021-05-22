@@ -52,7 +52,7 @@ const styles = StyleSheet.create({
     container2:{
         flexDirection:'column',
         backgroundColor: '#f0f0f0',
-        height: '92%',
+        height: '100vh',
     }, 
     input:{
         borderWidth:2,
@@ -81,7 +81,7 @@ const styles = StyleSheet.create({
     },
     register:{
         color:'#f0f0f0',
-        fontFamily:'Arail Nova',
+        fontFamily:'Arial Nova',
         fontSize:14,
         backgroundColor:'#448DDB',
         paddingHorizontal: 60,
