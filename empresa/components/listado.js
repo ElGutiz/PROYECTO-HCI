@@ -63,5 +63,6 @@ const styles = StyleSheet.create({
         color: 'black',
         fontSize: 16,
         padding: '5px',
+        fontFamily:'Arimo',
     }
   });
