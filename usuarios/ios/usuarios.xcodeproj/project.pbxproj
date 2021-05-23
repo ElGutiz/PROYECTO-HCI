@@ -15,6 +15,30 @@
 		96905EF65AED1B983A6B3ABC /* libPods-usuarios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 58EEBF8E8E6FB1BC6CAF49B5 /* libPods-usuarios.a */; };
 		BB2F792D24A3F905000567C9 /* Expo.plist in Resources */ = {isa = PBXBuildFile; fileRef = BB2F792C24A3F905000567C9 /* Expo.plist */; };
 		BB53DB70264F344F00E0CDBC /* noop-file.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB53DB6F264F344F00E0CDBC /* noop-file.swift */; };
+		9D5DEA1B6D82491B82BE5E32 /* Timeburner-xJB8.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 49E808AD1EA142D58421DF77 /* Timeburner-xJB8.ttf */; };
+		D0A4360B7B864ADDAEBAB856 /* TimeburnerBold-peGR.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 79AD5977F2584FCA97D5E6F1 /* TimeburnerBold-peGR.ttf */; };
+		8A0DBBD4F2AB456A95A5A1EE /* ArialNova-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3F29DBC0715445CBB44FF178 /* ArialNova-Bold.ttf */; };
+		A3CC06BB7F614D34A6C2DE35 /* ArialNova-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C89604F0CDFB43F6A044CC19 /* ArialNova-BoldItalic.ttf */; };
+		04437F2D03604EEFBE1C5B98 /* ArialNova-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0BA8080813DA4C10B26576C4 /* ArialNova-Italic.ttf */; };
+		917E2BEA801948B4A717CD0E /* ArialNova-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 45A848FB606F44889ACB566F /* ArialNova-Light.ttf */; };
+		AF189D2F2C944DB79C9BFC7D /* ArialNova-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 91E2FCA607FC4E8AAF738600 /* ArialNova-LightItalic.ttf */; };
+		21019FD1F57E4FB79F12F3B8 /* ArialNova.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0300B895614142C4AC706CFB /* ArialNova.ttf */; };
+		AB51A7C1F19B4DE6836F9D14 /* ArialNovaCond-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7BA54C17CE654798B12AB924 /* ArialNovaCond-Bold.ttf */; };
+		3B497E23E333405283F75CBE /* ArialNovaCond-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 636350B55B144BD58E936E36 /* ArialNovaCond-BoldItalic.ttf */; };
+		45B9E4B87C4E4B9B807DB0D6 /* ArialNovaCond-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4EC5370FFB0E463688E92C31 /* ArialNovaCond-Italic.ttf */; };
+		BB3C8F1761E6471AA7A4FCEB /* ArialNovaCond-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6C80396A9E174021A7AF4F37 /* ArialNovaCond-Light.ttf */; };
+		40D0CBB6C6ED48689750EFD9 /* ArialNovaCond-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 359D6CC7456347FC95E5FD34 /* ArialNovaCond-LightItalic.ttf */; };
+		DE595EA385874F209296F011 /* ArialNovaCond.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5230C73CF7E0422186ECBE02 /* ArialNovaCond.ttf */; };
+		47F07B1E3939419996E7A23E /* Arimo-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C94FDCF0BF1F4B849833BC8A /* Arimo-Bold.ttf */; };
+		483CC978D6684E6C8DB94ACE /* Arimo-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D03D02E8F05C43C0991AFC74 /* Arimo-BoldItalic.ttf */; };
+		5E56AF495FE14713A2E80A8B /* Arimo-Italic-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DEAE9A9DA09A4B1AA8EF9932 /* Arimo-Italic-VariableFont_wght.ttf */; };
+		23B171CF7D67431EBDB382E7 /* Arimo-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F076C29FF69E469698983345 /* Arimo-Italic.ttf */; };
+		D911E4E4EAB44DFCB32D1E28 /* Arimo-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4212E149E2674423BA43744A /* Arimo-Medium.ttf */; };
+		890462423FD74D4CBCAA329D /* Arimo-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0EC417EC324E4CCAA5852AF2 /* Arimo-MediumItalic.ttf */; };
+		2533F93611D843BC8ACD2B05 /* Arimo-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3BB98916AB94409F967000B8 /* Arimo-Regular.ttf */; };
+		1BBFA50C4A10451D8E8D9247 /* Arimo-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 301A7AA6150D49F3AD98F48A /* Arimo-SemiBold.ttf */; };
+		245729441A8448508F3B1EFF /* Arimo-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 152DEA5358C44BD89E74C19C /* Arimo-SemiBoldItalic.ttf */; };
+		E1BD9E2070F94642A3276D60 /* Arimo-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 808106BC8502453D91167274 /* Arimo-VariableFont_wght.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +58,30 @@
 		BB53DB6F264F344F00E0CDBC /* noop-file.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "noop-file.swift"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
+		49E808AD1EA142D58421DF77 /* Timeburner-xJB8.ttf */ = {isa = PBXFileReference; name = "Timeburner-xJB8.ttf"; path = "../SRC/Timeburner-xJB8.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		79AD5977F2584FCA97D5E6F1 /* TimeburnerBold-peGR.ttf */ = {isa = PBXFileReference; name = "TimeburnerBold-peGR.ttf"; path = "../SRC/TimeburnerBold-peGR.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		3F29DBC0715445CBB44FF178 /* ArialNova-Bold.ttf */ = {isa = PBXFileReference; name = "ArialNova-Bold.ttf"; path = "../SRC/ArialNova-Bold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		C89604F0CDFB43F6A044CC19 /* ArialNova-BoldItalic.ttf */ = {isa = PBXFileReference; name = "ArialNova-BoldItalic.ttf"; path = "../SRC/ArialNova-BoldItalic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		0BA8080813DA4C10B26576C4 /* ArialNova-Italic.ttf */ = {isa = PBXFileReference; name = "ArialNova-Italic.ttf"; path = "../SRC/ArialNova-Italic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		45A848FB606F44889ACB566F /* ArialNova-Light.ttf */ = {isa = PBXFileReference; name = "ArialNova-Light.ttf"; path = "../SRC/ArialNova-Light.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		91E2FCA607FC4E8AAF738600 /* ArialNova-LightItalic.ttf */ = {isa = PBXFileReference; name = "ArialNova-LightItalic.ttf"; path = "../SRC/ArialNova-LightItalic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		0300B895614142C4AC706CFB /* ArialNova.ttf */ = {isa = PBXFileReference; name = "ArialNova.ttf"; path = "../SRC/ArialNova.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		7BA54C17CE654798B12AB924 /* ArialNovaCond-Bold.ttf */ = {isa = PBXFileReference; name = "ArialNovaCond-Bold.ttf"; path = "../SRC/ArialNovaCond-Bold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		636350B55B144BD58E936E36 /* ArialNovaCond-BoldItalic.ttf */ = {isa = PBXFileReference; name = "ArialNovaCond-BoldItalic.ttf"; path = "../SRC/ArialNovaCond-BoldItalic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		4EC5370FFB0E463688E92C31 /* ArialNovaCond-Italic.ttf */ = {isa = PBXFileReference; name = "ArialNovaCond-Italic.ttf"; path = "../SRC/ArialNovaCond-Italic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		6C80396A9E174021A7AF4F37 /* ArialNovaCond-Light.ttf */ = {isa = PBXFileReference; name = "ArialNovaCond-Light.ttf"; path = "../SRC/ArialNovaCond-Light.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		359D6CC7456347FC95E5FD34 /* ArialNovaCond-LightItalic.ttf */ = {isa = PBXFileReference; name = "ArialNovaCond-LightItalic.ttf"; path = "../SRC/ArialNovaCond-LightItalic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		5230C73CF7E0422186ECBE02 /* ArialNovaCond.ttf */ = {isa = PBXFileReference; name = "ArialNovaCond.ttf"; path = "../SRC/ArialNovaCond.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		C94FDCF0BF1F4B849833BC8A /* Arimo-Bold.ttf */ = {isa = PBXFileReference; name = "Arimo-Bold.ttf"; path = "../SRC/Arimo-Bold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		D03D02E8F05C43C0991AFC74 /* Arimo-BoldItalic.ttf */ = {isa = PBXFileReference; name = "Arimo-BoldItalic.ttf"; path = "../SRC/Arimo-BoldItalic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		DEAE9A9DA09A4B1AA8EF9932 /* Arimo-Italic-VariableFont_wght.ttf */ = {isa = PBXFileReference; name = "Arimo-Italic-VariableFont_wght.ttf"; path = "../SRC/Arimo-Italic-VariableFont_wght.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		F076C29FF69E469698983345 /* Arimo-Italic.ttf */ = {isa = PBXFileReference; name = "Arimo-Italic.ttf"; path = "../SRC/Arimo-Italic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		4212E149E2674423BA43744A /* Arimo-Medium.ttf */ = {isa = PBXFileReference; name = "Arimo-Medium.ttf"; path = "../SRC/Arimo-Medium.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		0EC417EC324E4CCAA5852AF2 /* Arimo-MediumItalic.ttf */ = {isa = PBXFileReference; name = "Arimo-MediumItalic.ttf"; path = "../SRC/Arimo-MediumItalic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		3BB98916AB94409F967000B8 /* Arimo-Regular.ttf */ = {isa = PBXFileReference; name = "Arimo-Regular.ttf"; path = "../SRC/Arimo-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		301A7AA6150D49F3AD98F48A /* Arimo-SemiBold.ttf */ = {isa = PBXFileReference; name = "Arimo-SemiBold.ttf"; path = "../SRC/Arimo-SemiBold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		152DEA5358C44BD89E74C19C /* Arimo-SemiBoldItalic.ttf */ = {isa = PBXFileReference; name = "Arimo-SemiBoldItalic.ttf"; path = "../SRC/Arimo-SemiBoldItalic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		808106BC8502453D91167274 /* Arimo-VariableFont_wght.ttf */ = {isa = PBXFileReference; name = "Arimo-VariableFont_wght.ttf"; path = "../SRC/Arimo-VariableFont_wght.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +138,7 @@
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				D65327D7A22EEC0BE12398D9 /* Pods */,
+				AAECAAAD62CC4B7883002A0D /* Resources */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -121,6 +170,38 @@
 			);
 			path = Pods;
 			sourceTree = "<group>";
+		};
+		AAECAAAD62CC4B7883002A0D /* Resources */ = {
+			isa = "PBXGroup";
+			children = (
+				49E808AD1EA142D58421DF77 /* Timeburner-xJB8.ttf */,
+				79AD5977F2584FCA97D5E6F1 /* TimeburnerBold-peGR.ttf */,
+				3F29DBC0715445CBB44FF178 /* ArialNova-Bold.ttf */,
+				C89604F0CDFB43F6A044CC19 /* ArialNova-BoldItalic.ttf */,
+				0BA8080813DA4C10B26576C4 /* ArialNova-Italic.ttf */,
+				45A848FB606F44889ACB566F /* ArialNova-Light.ttf */,
+				91E2FCA607FC4E8AAF738600 /* ArialNova-LightItalic.ttf */,
+				0300B895614142C4AC706CFB /* ArialNova.ttf */,
+				7BA54C17CE654798B12AB924 /* ArialNovaCond-Bold.ttf */,
+				636350B55B144BD58E936E36 /* ArialNovaCond-BoldItalic.ttf */,
+				4EC5370FFB0E463688E92C31 /* ArialNovaCond-Italic.ttf */,
+				6C80396A9E174021A7AF4F37 /* ArialNovaCond-Light.ttf */,
+				359D6CC7456347FC95E5FD34 /* ArialNovaCond-LightItalic.ttf */,
+				5230C73CF7E0422186ECBE02 /* ArialNovaCond.ttf */,
+				C94FDCF0BF1F4B849833BC8A /* Arimo-Bold.ttf */,
+				D03D02E8F05C43C0991AFC74 /* Arimo-BoldItalic.ttf */,
+				DEAE9A9DA09A4B1AA8EF9932 /* Arimo-Italic-VariableFont_wght.ttf */,
+				F076C29FF69E469698983345 /* Arimo-Italic.ttf */,
+				4212E149E2674423BA43744A /* Arimo-Medium.ttf */,
+				0EC417EC324E4CCAA5852AF2 /* Arimo-MediumItalic.ttf */,
+				3BB98916AB94409F967000B8 /* Arimo-Regular.ttf */,
+				301A7AA6150D49F3AD98F48A /* Arimo-SemiBold.ttf */,
+				152DEA5358C44BD89E74C19C /* Arimo-SemiBoldItalic.ttf */,
+				808106BC8502453D91167274 /* Arimo-VariableFont_wght.ttf */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+			path = "";
 		};
 /* End PBXGroup section */
 
@@ -186,6 +267,30 @@
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
 				3E461D99554A48A4959DE609 /* SplashScreen.storyboard in Resources */,
+				9D5DEA1B6D82491B82BE5E32 /* Timeburner-xJB8.ttf in Resources */,
+				D0A4360B7B864ADDAEBAB856 /* TimeburnerBold-peGR.ttf in Resources */,
+				8A0DBBD4F2AB456A95A5A1EE /* ArialNova-Bold.ttf in Resources */,
+				A3CC06BB7F614D34A6C2DE35 /* ArialNova-BoldItalic.ttf in Resources */,
+				04437F2D03604EEFBE1C5B98 /* ArialNova-Italic.ttf in Resources */,
+				917E2BEA801948B4A717CD0E /* ArialNova-Light.ttf in Resources */,
+				AF189D2F2C944DB79C9BFC7D /* ArialNova-LightItalic.ttf in Resources */,
+				21019FD1F57E4FB79F12F3B8 /* ArialNova.ttf in Resources */,
+				AB51A7C1F19B4DE6836F9D14 /* ArialNovaCond-Bold.ttf in Resources */,
+				3B497E23E333405283F75CBE /* ArialNovaCond-BoldItalic.ttf in Resources */,
+				45B9E4B87C4E4B9B807DB0D6 /* ArialNovaCond-Italic.ttf in Resources */,
+				BB3C8F1761E6471AA7A4FCEB /* ArialNovaCond-Light.ttf in Resources */,
+				40D0CBB6C6ED48689750EFD9 /* ArialNovaCond-LightItalic.ttf in Resources */,
+				DE595EA385874F209296F011 /* ArialNovaCond.ttf in Resources */,
+				47F07B1E3939419996E7A23E /* Arimo-Bold.ttf in Resources */,
+				483CC978D6684E6C8DB94ACE /* Arimo-BoldItalic.ttf in Resources */,
+				5E56AF495FE14713A2E80A8B /* Arimo-Italic-VariableFont_wght.ttf in Resources */,
+				23B171CF7D67431EBDB382E7 /* Arimo-Italic.ttf in Resources */,
+				D911E4E4EAB44DFCB32D1E28 /* Arimo-Medium.ttf in Resources */,
+				890462423FD74D4CBCAA329D /* Arimo-MediumItalic.ttf in Resources */,
+				2533F93611D843BC8ACD2B05 /* Arimo-Regular.ttf in Resources */,
+				1BBFA50C4A10451D8E8D9247 /* Arimo-SemiBold.ttf in Resources */,
+				245729441A8448508F3B1EFF /* Arimo-SemiBoldItalic.ttf in Resources */,
+				E1BD9E2070F94642A3276D60 /* Arimo-VariableFont_wght.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

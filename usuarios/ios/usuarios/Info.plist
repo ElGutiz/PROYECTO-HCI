@@ -49,7 +49,34 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
-  <key>UIStatusBarStyle</key>
-  <string>UIStatusBarStyleDefault</string>
+	<key>UIStatusBarStyle</key>
+	<string>UIStatusBarStyleDefault</string>
+	<key>UIAppFonts</key>
+	<array>
+		<string>Timeburner-xJB8.ttf</string>
+		<string>TimeburnerBold-peGR.ttf</string>
+		<string>ArialNova-Bold.ttf</string>
+		<string>ArialNova-BoldItalic.ttf</string>
+		<string>ArialNova-Italic.ttf</string>
+		<string>ArialNova-Light.ttf</string>
+		<string>ArialNova-LightItalic.ttf</string>
+		<string>ArialNova.ttf</string>
+		<string>ArialNovaCond-Bold.ttf</string>
+		<string>ArialNovaCond-BoldItalic.ttf</string>
+		<string>ArialNovaCond-Italic.ttf</string>
+		<string>ArialNovaCond-Light.ttf</string>
+		<string>ArialNovaCond-LightItalic.ttf</string>
+		<string>ArialNovaCond.ttf</string>
+		<string>Arimo-Bold.ttf</string>
+		<string>Arimo-BoldItalic.ttf</string>
+		<string>Arimo-Italic-VariableFont_wght.ttf</string>
+		<string>Arimo-Italic.ttf</string>
+		<string>Arimo-Medium.ttf</string>
+		<string>Arimo-MediumItalic.ttf</string>
+		<string>Arimo-Regular.ttf</string>
+		<string>Arimo-SemiBold.ttf</string>
+		<string>Arimo-SemiBoldItalic.ttf</string>
+		<string>Arimo-VariableFont_wght.ttf</string>
+	</array>
 </dict>
 </plist>
