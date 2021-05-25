@@ -3,8 +3,8 @@ import {StyleSheet, Image, View, Text, TextInput, TouchableOpacity} from 'react-
 
 export default function registro(){
     return(
-    <View style = {styles.container}>
-        <View>
+    <View >
+        <View style = {styles.container}>
             <Image style ={styles.menu} source={require('../imagenes/Menu.png')}></Image>
             <Text style ={styles.texto}>Chance al Chile</Text>
         </View>
