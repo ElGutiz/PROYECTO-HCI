@@ -2,16 +2,16 @@ import React from 'react';
 import { StyleSheet, Image, View, Text, TextInput, TouchableOpacity } from 'react-native';
 import icono from '../imagenes/UserIcon.png';
 import descarga from '../imagenes/descarga.png';
-export default function registro() {
+export default function registro({navigation}) {
+
     return (
         <View>
-            <View style={styles.container}>
-                <View style={styles.container}>
-                    <Image style={styles.menu} source={require('../imagenes/Menu.png')}></Image>
-                    <Text style={styles.texto}>Chance al Chile</Text>
-                </View>
+            <View style = {styles.container}>
+                <TouchableOpacity onPress = {() => navigation.navigate('Login')}>
+                    <Image style ={styles.menu} source={require('../imagenes/Menu.png')}></Image>
+                </TouchableOpacity>
+                <Text style ={styles.texto}>Chance al Chile</Text>
             </View>
-
             <View style={styles.list}>
                 <Image source={icono} style={styles.icon}></Image>
                 <View style={styles.list2}>
@@ -45,7 +45,7 @@ export default function registro() {
             </View>
             <View style={styles.div}>
                 <TouchableOpacity
-                    activeOpacity={0.8}>
+                    activeOpacity={0.8} onPress = {async() => navigation.navigate('Login')} onPressOut = {async() => alert("Chupapi")}>
                     <Text style={styles.register}>Match</Text>
                 </TouchableOpacity>
             </View>

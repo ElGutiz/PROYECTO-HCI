@@ -1,11 +1,13 @@
 import React from 'react';
 import {StyleSheet, Image, View, Text, TextInput, TouchableOpacity} from 'react-native';
 
-export default function registro(){
+export default function registro({navigation}){
     return(
     <View >
         <View style = {styles.container}>
-            <Image style ={styles.menu} source={require('../imagenes/Menu.png')}></Image>
+            <TouchableOpacity onPress = {() => navigation.navigate('Login')}>
+                <Image style ={styles.menu} source={require('../imagenes/Menu.png')}></Image>
+            </TouchableOpacity>
             <Text style ={styles.texto}>Chance al Chile</Text>
         </View>
         <View style = {styles.container2}>
@@ -22,7 +24,7 @@ export default function registro(){
 
             <View style={styles.container3}>
             <TouchableOpacity
-                activeOpacity={0.8}>
+                activeOpacity={0.8} onPress = {() => navigation.navigate('Login')}>
                 <Text style={styles.register}>Register</Text>
             </TouchableOpacity>
             </View>
