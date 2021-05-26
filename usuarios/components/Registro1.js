@@ -2,9 +2,9 @@ import React from "react";
 import { StyleSheet, TextInput, View, Text, TouchableOpacity } from "react-native";
 import { Button } from 'react-native-elements';
 import { AntDesign } from '@expo/vector-icons';
-import { usefonts, NotoSans_400Regular, useFonts, Mukta_400Regular } from "@expo-google-fonts/dev"; 
+import { NotoSans_400Regular, useFonts, Mukta_400Regular } from "@expo-google-fonts/dev"; 
 
-const Registro1 = () => {
+export default function Login({navigation}) {
   const [username, onChangeUsername] = React.useState(null);
   const [password, onChangePassword] = React.useState(null);
   const [mail, onChangeMail] = React.useState(null);
@@ -18,7 +18,7 @@ const Registro1 = () => {
   return (
     <View>
         <View style = {styles.container2}>
-            <TouchableOpacity>
+            <TouchableOpacity onPress = {() => navigation.navigate('Login')}>
                 <AntDesign name="back" size={27} color="white"/>
             </TouchableOpacity>
             <Text style ={styles.topbartext}>Chance al Chile</Text>
@@ -58,8 +58,7 @@ const Registro1 = () => {
             <Button
                 title="Next"
                 titleStyle={{
-                    color: '#fff', 
-                    fontWeight: "bold", 
+                    color: '#fff',
                     fontSize: 15,
                     fontFamily:'Mukta_400Regular', 
                 }}
@@ -70,6 +69,7 @@ const Registro1 = () => {
                     borderRadius: 20,
                     backgroundColor: '#448DDB'
                 }}
+                onPress = {() => navigation.navigate('Registro2')}
             />
         </View>
     </View>
@@ -146,5 +146,3 @@ const styles = StyleSheet.create({
         paddingLeft: 10,
     },
 });
-
-export default Registro1;

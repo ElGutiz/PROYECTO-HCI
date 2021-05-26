@@ -38,7 +38,6 @@ export default class Registro2 extends React.Component {
     componentDidMount() {
         this._loadFontsAsync();
     }
-
     // const [selectedLanguage, setSelectedLanguage] = useState();
     updateTagState = (state) => {
         this.setState({
@@ -51,7 +50,7 @@ export default class Registro2 extends React.Component {
             return (
                 <View>
                     <View style = {styles.container2}>
-                        <TouchableOpacity>
+                        <TouchableOpacity onPress={() => this.props.navigation.navigate('Registro1')}>
                             <AntDesign name="back" size={27} color="white"/>
                         </TouchableOpacity>
                         <Text style ={styles.topbartext}>Chance al Chile</Text>
@@ -71,7 +70,7 @@ export default class Registro2 extends React.Component {
                                 <Picker.Item label="Administracion de empresas" value="ade" />
                             </Picker>
                         </View>
-                        <View style={[styles.container, {transform: [{ translateY: 200 }]}]} >
+                        <View style={[styles.container, {transform: [{ translateY: 150 }]}]} >
                             <TagInput
                                 updateState={this.updateTagState}
                                 tags={this.state.tags}
@@ -93,7 +92,7 @@ export default class Registro2 extends React.Component {
                         </View>
                         <View style={[{transform: [{ translateY: 450 }]}]}>
                             <View style={[styles.container_r, {transform: [{ translateY: 10 }]}]}>
-                                <FontAwesome.Button name="upload" backgroundColor='#fff'
+                                <FontAwesome.Button name="upload" backgroundColor='#F0F0F0'
                                 style={{
                                     width: 100,
                                     height: 30,
@@ -104,7 +103,7 @@ export default class Registro2 extends React.Component {
                                 }}>
                                     CV
                                 </FontAwesome.Button>
-                                <FontAwesome.Button name="upload" backgroundColor='#fff'
+                                <FontAwesome.Button name="upload" backgroundColor='#F0F0F0'
                                 style={{
                                     width: 100,
                                     height: 30,
@@ -158,7 +157,7 @@ const styles = StyleSheet.create({
     container_r: {
         flexDirection:'row',
         alignSelf: 'center',
-        marginBottom: 20,       
+        marginBottom: 20,     
     },
     picker_s: {
         width:250,

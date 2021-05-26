@@ -1,10 +1,9 @@
 import React from 'react';
 import { StyleSheet, Text, View, Image, TextInput, TouchableOpacity } from 'react-native';
-import { Button } from 'react-native-elements';
-import { usefonts, NotoSans_400Regular, useFonts, Mukta_400Regular } from "@expo-google-fonts/dev"; 
+import { NotoSans_400Regular, useFonts, Mukta_400Regular } from "@expo-google-fonts/dev"; 
 
 
-const Login = () => {
+export default function Login({navigation}) {
   let [fontsLoaded] = useFonts({
     NotoSans_400Regular,
     Mukta_400Regular,
@@ -24,7 +23,7 @@ const Login = () => {
         <Text style={styles.login}>LOG IN</Text>
       </TouchableOpacity>
       <TouchableOpacity
-      activeOpacity={0.8}>
+      activeOpacity={0.8} onPress = {() => navigation.navigate('Registro1')}>
         <Text style={styles.register}>Register</Text>
       </TouchableOpacity>
     </View>
@@ -56,6 +55,8 @@ const styles = StyleSheet.create({
     borderColor:'#f0f0f0',
     borderRadius:50,
     marginBottom:20,
+    fontFamily: 'Mukta_400Regular',
+    paddingLeft: 10,
   },
   login:{
     color:'#f0f0f0',
@@ -76,4 +77,3 @@ const styles = StyleSheet.create({
   }
 });
 
-export default Login;
