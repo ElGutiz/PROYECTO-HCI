@@ -1,6 +1,8 @@
 import React from "react";
-import { StyleSheet, TextInput, View, Image, Text } from "react-native";
+import { StyleSheet, TextInput, View, Text, TouchableOpacity } from "react-native";
 import { Button } from 'react-native-elements';
+import { AntDesign } from '@expo/vector-icons';
+import { usefonts, NotoSans_400Regular, useFonts, Mukta_400Regular } from "@expo-google-fonts/dev"; 
 
 const Registro1 = () => {
   const [username, onChangeUsername] = React.useState(null);
@@ -8,8 +10,19 @@ const Registro1 = () => {
   const [mail, onChangeMail] = React.useState(null);
   const [biography, onChangeBiography] = React.useState(null);
 
+  let [fontsLoaded] = useFonts({
+    NotoSans_400Regular,
+    Mukta_400Regular,
+  });
+
   return (
     <View>
+        <View style = {styles.container2}>
+            <TouchableOpacity>
+                <AntDesign name="back" size={27} color="white"/>
+            </TouchableOpacity>
+            <Text style ={styles.topbartext}>Chance al Chile</Text>
+        </View> 
         <View style={styles.Form}>
             <Text style={styles.titulo}>User Information</Text>
             <TextInput
@@ -46,8 +59,9 @@ const Registro1 = () => {
                 title="Next"
                 titleStyle={{
                     color: '#fff', 
-                    fontWeight: 500, 
-                    fontSize: 15, 
+                    fontWeight: "bold", 
+                    fontSize: 15,
+                    fontFamily:'Mukta_400Regular', 
                 }}
                 buttonStyle={{
                     marginTop: 20,
@@ -75,7 +89,7 @@ const styles = StyleSheet.create({
     },
     texto2:{
         color:'#f0f0f0',
-        fontFamily:'AnimoItalic.ttf',
+        fontFamily:'Mukta_400Regular',
         marginLeft:20,
         fontSize:22,
     },
@@ -85,6 +99,7 @@ const styles = StyleSheet.create({
         marginTop: 20,
         fontSize: 18,
         width: 200,
+        fontFamily:'Mukta_400Regular',
     },
     input: {
         height: 40,
@@ -98,6 +113,7 @@ const styles = StyleSheet.create({
         borderBottomColor:'#1DCC8B',
         paddingLeft: 10,
         paddingRight: 10,
+        fontFamily:'Mukta_400Regular',
     },
     menu:{
         width:25,
@@ -113,7 +129,21 @@ const styles = StyleSheet.create({
         backgroundColor: '#EBEBEB',
         color: '#000',
         padding: 5,
-        borderColor: '#D0D0D0'
+        borderColor: '#D0D0D0',
+        fontFamily:'Mukta_400Regular',
+    },
+    container2: {
+        flexDirection: 'row',
+        backgroundColor: '#1DCC8B',
+        paddingVertical: 10,
+        paddingLeft: 10,
+    },
+    topbartext: {
+        color: '#f0f0f0',
+        fontFamily: 'Mukta_400Regular',
+        marginLeft: 20,
+        fontSize: 22,
+        paddingLeft: 10,
     },
 });
 
