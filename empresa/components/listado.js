@@ -1,8 +1,12 @@
 import React from 'react';
 import {StyleSheet, Image, View, Text, TextInput, TouchableOpacity} from 'react-native';
 import {registroData} from "../components/listadoData";
-
+import { NotoSans_400Regular, useFonts, Mukta_400Regular } from "@expo-google-fonts/dev";
 export default function registro({navigation}){
+    let [fontsLoaded] = useFonts({
+        NotoSans_400Regular,
+        Mukta_400Regular,
+      });
     return(
     <View>
         <View style = {styles.container}>
@@ -39,7 +43,7 @@ const styles = StyleSheet.create({
     texto:{
         color:'#f0f0f0',
         fontWeight:'bold',
-        fontFamily:'Arimo',
+        fontFamily:'Mukta_400Regular',
         marginLeft:20,
         fontSize:22,
     },
@@ -69,6 +73,6 @@ const styles = StyleSheet.create({
         color: 'black',
         fontSize: 16,
         padding: '5px',
-        fontFamily:'Arimo',
+        fontFamily:'Mukta_400Regular',
     }
   });
