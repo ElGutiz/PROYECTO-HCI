@@ -1,11 +1,17 @@
 import React from 'react';
 import {StyleSheet, Image, View, Text, TextInput, TouchableOpacity} from 'react-native';
-
-export default function registro(){
+import { NotoSans_400Regular, useFonts, Mukta_400Regular } from "@expo-google-fonts/dev";
+export default function registro({navigation}){
+    let [fontsLoaded] = useFonts({
+        NotoSans_400Regular,
+        Mukta_400Regular,
+    });
     return(
     <View >
         <View style = {styles.container}>
-            <Image style ={styles.menu} source={require('../imagenes/Menu.png')}></Image>
+            <TouchableOpacity onPress = {() => navigation.navigate('Login')}>
+                <Image style ={styles.menu} source={require('../imagenes/Menu.png')}></Image>
+            </TouchableOpacity>
             <Text style ={styles.texto}>Chance al Chile</Text>
         </View>
         <View style = {styles.container2}>
@@ -22,7 +28,7 @@ export default function registro(){
 
             <View style={styles.container3}>
             <TouchableOpacity
-                activeOpacity={0.8}>
+                activeOpacity={0.8} onPress = {() => navigation.navigate('Login')}>
                 <Text style={styles.register}>Register</Text>
             </TouchableOpacity>
             </View>
@@ -40,7 +46,7 @@ const styles = StyleSheet.create({
     texto:{
         color:'#f0f0f0',
         fontWeight:'bold',
-        fontFamily:'Arimo',
+        fontFamily:'Mukta_400Regular',
         marginLeft:20,
         fontSize:22,
     },
@@ -60,14 +66,14 @@ const styles = StyleSheet.create({
         borderTopColor: '#f0f0f0',
         borderLeftColor: '#f0f0f0',
         borderBottomColor:'#1DCC8B',
-        fontFamily:'Arimo',
+        fontFamily:'Mukta_400Regular',
         marginBottom:40,
         marginLeft: 50,
         marginRight: 50,
     },
     texto2:{
         color:'black',
-        fontFamily:'Arimo',
+        fontFamily:'Mukta_400Regular',
         fontSize:14,
         marginLeft: 50,
         marginTop: 22,
@@ -81,7 +87,7 @@ const styles = StyleSheet.create({
     },
     register:{
         color:'#f0f0f0',
-        fontFamily:'Arial Nova',
+        fontFamily:'Mukta_400Regular',
         fontSize:14,
         backgroundColor:'#448DDB',
         paddingHorizontal: 60,

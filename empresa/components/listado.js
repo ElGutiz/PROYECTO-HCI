@@ -1,23 +1,33 @@
 import React from 'react';
 import {StyleSheet, Image, View, Text, TextInput, TouchableOpacity} from 'react-native';
 import {registroData} from "../components/listadoData";
-
-export default function registro(){
+import { NotoSans_400Regular, useFonts, Mukta_400Regular } from "@expo-google-fonts/dev";
+export default function registro({navigation}){
+    let [fontsLoaded] = useFonts({
+        NotoSans_400Regular,
+        Mukta_400Regular,
+      });
     return(
     <View>
         <View style = {styles.container}>
-            <Image style ={styles.menu} source={require('../imagenes/Menu.png')}></Image>
+        <View style = {styles.container}>
+            <TouchableOpacity onPress = {() => navigation.navigate('Login')}>
+                <Image style ={styles.menu} source={require('../imagenes/Menu.png')}></Image>
+            </TouchableOpacity>
             <Text style ={styles.texto}>Chance al Chile</Text>
+        </View>
         </View>
             { registroData.map((item, index) => {
                 return(
-                    <View key={index} style = {styles.list}>
-                        <Image source={item.icon} style = {styles.icon}></Image>
-                        <View style = {styles.list2}>
-                            <Text style = {styles.texto1}>{item.name}</Text>
-                            <Text style = {styles.texto1}>{item.bio}</Text>
+                    <TouchableOpacity key={index} onPress = {() => navigation.navigate('Match')}>
+                        <View style = {styles.list}>
+                            <Image source={item.icon} style = {styles.icon}></Image>
+                            <View style = {styles.list2}>
+                                <Text style = {styles.texto1}>{item.name}</Text>
+                                <Text style = {styles.texto1}>{item.bio}</Text>
+                            </View>
                         </View>
-                    </View>
+                    </TouchableOpacity>
                 );
             })}
     </View>
@@ -33,7 +43,7 @@ const styles = StyleSheet.create({
     texto:{
         color:'#f0f0f0',
         fontWeight:'bold',
-        fontFamily:'Arimo',
+        fontFamily:'Mukta_400Regular',
         marginLeft:20,
         fontSize:22,
     },
@@ -63,6 +73,6 @@ const styles = StyleSheet.create({
         color: 'black',
         fontSize: 16,
         padding: '5px',
-        fontFamily:'Arimo',
+        fontFamily:'Mukta_400Regular',
     }
   });
