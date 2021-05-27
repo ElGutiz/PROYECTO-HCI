@@ -1,13 +1,24 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { StyleSheet, Text, View, Image, TextInput, TouchableOpacity } from 'react-native';
 import { NotoSans_400Regular, useFonts, Mukta_400Regular } from "@expo-google-fonts/dev"; 
-
 
 export default function Login({navigation}) {
   let [fontsLoaded] = useFonts({
     NotoSans_400Regular,
     Mukta_400Regular,
   });
+
+  const state = {
+    logged:false};
+
+
+  const loginUser = async(username, password) => {
+    navigation.navigate('Registro1')
+  };
+
+  const [input1, onChangeUsername] = useState(null)
+  const [input2, onChangePassword] = useState(null)
+
   return (
     <View style={styles.container}>
        <Image
@@ -15,15 +26,15 @@ export default function Login({navigation}) {
         source={require('../imagenes/LogoU.png')}
       />
       <Text style={styles.text}>Username:</Text>
-      <TextInput style={styles.input}></TextInput>
+      <TextInput onChangeText={onChangeUsername} style={styles.input} value={input1}></TextInput>
       <Text style={styles.text}>Password:</Text>
-      <TextInput style={styles.input}></TextInput>
+      <TextInput onChangeText={onChangePassword} style={styles.input} value={input2}></TextInput>
       <TouchableOpacity
-      activeOpacity={0.8}>
+      activeOpacity={0.8} onPress = {() => loginUser(input1, input2)}>
         <Text style={styles.login}>LOG IN</Text>
       </TouchableOpacity>
       <TouchableOpacity
-      activeOpacity={0.8} onPress = {() => navigation.navigate('Registro1')}>
+      activeOpacity={0.8} onPress = {() =>navigation.navigate('Registro1') }>
         <Text style={styles.register}>Register</Text>
       </TouchableOpacity>
     </View>
