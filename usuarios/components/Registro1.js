@@ -1,14 +1,20 @@
 import React from "react";
-import { StyleSheet, TextInput, View, Text, TouchableOpacity } from "react-native";
+import { StyleSheet, TextInput, View, Text, TouchableOpacity, Alert } from "react-native";
 import { Button } from 'react-native-elements';
 import { AntDesign } from '@expo/vector-icons';
 import { NotoSans_400Regular, useFonts, Mukta_400Regular } from "@expo-google-fonts/dev"; 
+import Toast from 'react-native-toast-message';
 
 export default function Login({navigation}) {
-  const [username, onChangeUsername] = React.useState(null);
-  const [password, onChangePassword] = React.useState(null);
-  const [mail, onChangeMail] = React.useState(null);
-  const [biography, onChangeBiography] = React.useState(null);
+  const [username, onChangeUsername] = React.useState('');
+  const [password, onChangePassword] = React.useState('');
+  const [mail, onChangeMail] = React.useState('');
+  const [biography, onChangeBiography] = React.useState('');
+  
+  let usernameLenght = username.length;
+  let passwordLenght = password.length;
+  let mailLenght = mail.length;
+  let biographyLenght = biography.length;
 
   let [fontsLoaded] = useFonts({
     NotoSans_400Regular,
@@ -69,7 +75,7 @@ export default function Login({navigation}) {
                     borderRadius: 20,
                     backgroundColor: '#448DDB'
                 }}
-                onPress = {() => navigation.navigate('Registro2')}
+                onPress = {() => {usernameLenght === 0 || passwordLenght === 0 || mailLenght === 0 || biographyLenght === 0 ? createTwoButtonAlert : navigation.navigate('Registro2')}}
             />
         </View>
     </View>
