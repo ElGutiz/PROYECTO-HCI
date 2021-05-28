@@ -9,6 +9,7 @@ export default function registro({ navigation, route }) {
 
     const registroData1 = []
     const registroData = []
+    const B = (props) => <Text style={{fontWeight: 'bold'}}>{props.children}</Text>
 
     const [datos, onChangeData] = useState([])
 
@@ -55,20 +56,20 @@ export default function registro({ navigation, route }) {
 
             <View>
                 {
-                (datos.length === 0) ?
+                (datos) ?
                 datos.map((item, index) => {
                     return (
                         <TouchableOpacity key={index} onPress={() => navigation.navigate('Match', { data: item })}>
                             <View style={styles.list}>
                                 <Image source={item.foto} style={styles.icon}></Image>
                                 <View style={styles.list2}>
-                                    <Text style={styles.texto1}>{item.usuario}</Text>
-                                    <Text style={styles.texto1}>{item.bio}</Text>
+                                    <Text style={styles.texto1}><B>{item.usuario}</B></Text>
+                                    <Text style={styles.texto1}>{item.bio.length>30 ? item.bio.slice(0, 27)+'...' : item.bio}</Text>
                                 </View>
                             </View>
                         </TouchableOpacity>
                     );
-                }):return(<Text>No hay usuarios que hagan MATCH</Text>)}
+                }):<Text>No hay usuarios que hagan MATCH</Text>}
             </View>
         </View>
     );
@@ -78,7 +79,7 @@ const styles = StyleSheet.create({
     container: {
         flexDirection: 'row',
         backgroundColor: '#1DCC8B',
-        paddingVertical: 10,
+        paddingVertical: 5,
         
     },
     container22:{
@@ -124,5 +125,7 @@ const styles = StyleSheet.create({
         fontSize: 16,
         padding: '5px',
         fontFamily: 'Mukta_400Regular',
+        maxWidth: 230,
+        numberOfLines: 1
     }
 });
