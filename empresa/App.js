@@ -8,7 +8,8 @@ import Login from './components/Login';
 import registro from './components/registro';
 import registro2 from './components/registro2';
 import listado from './components/listado';
-import Match from './components/Match'
+import Match from './components/Match';
+import vacante from './components/vacante'
 import { HeaderTitle } from '@react-navigation/stack';
 import Toast from 'react-native-toast-message';
 
@@ -24,6 +25,7 @@ export default function App() {
       }}
       >
         <Stack.Screen name ="Login" component={Login} />
+        <Stack.Screen name ="Vacante" component={vacante} />
         <Stack.Screen name ="Registro" component={registro} />
         <Stack.Screen name="Registro2" component={registro2}/>
         <Stack.Screen name ="Listado" component={listado} />
