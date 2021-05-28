@@ -98,7 +98,7 @@ export default function Registro1({navigation}) {
                     if(phoneLenght != 8){
                         PhoneToAlert();
                     }else{
-                    navigation.navigate('Registro2')
+                        navigation.navigate('Registro2', {phone:phone, password:password, mail:mail})
                     }
                 }
             }

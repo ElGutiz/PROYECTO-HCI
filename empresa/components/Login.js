@@ -28,10 +28,10 @@ export default function Login({ navigation }) {
       method:'GET',
       headers: {
         'Content-Type': 'application/json',
-        'usuario':username,
+        'nombre':username,
         'contrasena':password
       }
-    })
+    }, {mode:'no-cors'})
     .then(results => results.json())
     .then((json) => {
       if(json.login === true){

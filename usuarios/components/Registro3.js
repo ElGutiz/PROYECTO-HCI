@@ -48,6 +48,11 @@ export default class Registro3 extends React.Component {
             tagsColor: mainColor,
             tagsText: '#fff',
             selectedLanguage: '',
+            phone: props.route.params.phone,
+            password: props.route.params.password,
+            mail: props.route.params.mail,
+            username: props.route.params.username,
+            biography: props.route.params.biography,
         };
     }
        
@@ -103,6 +108,7 @@ export default class Registro3 extends React.Component {
                                 <Picker.Item label="Administracion de empresas" value="ade" />
                             </Picker>
                         </View>
+                        <Text>{JSON.stringify(this.state.nameffr)}</Text>
                         <View style={[styles.container, {transform: [{ translateY: 150 }]}]} >
                             <TagInput
                                 updateState={this.updateTagState}
@@ -137,7 +143,16 @@ export default class Registro3 extends React.Component {
                                     borderRadius: 6,
                                     backgroundColor: '#448DDB'
                                 }}
-                                onPress = {async() => this.props.navigation.navigate('Registro4')}
+                                onPress = {async() => this.props.navigation.navigate('Registro4', 
+                                {
+                                    phone:this.state.phone, 
+                                    password:this.state.password, 
+                                    mail:this.state.mail,
+                                    username:this.state.username,
+                                    biography:this.state.biography,
+                                    selectedLanguage: this.state.selectedLanguage,
+                                    tagsArray: this.state.tags.tagsArray
+                                })}
                             />
                         </View>
                     </View>

@@ -6,43 +6,44 @@ import { NotoSans_400Regular, useFonts, Mukta_400Regular } from "@expo-google-fo
 import Toast from 'react-native-toast-message';
 import StepIndicator from 'react-native-step-indicator';
 
-export default function Registro2({navigation}) {
-  const [username, onChangeUsername] = React.useState('');
-  const [biography, onChangeBiography] = React.useState('');
-  const labels = ["Cuenta","Datos","Profesional","Docs."];
-  const customStyles = {
-    stepIndicatorSize: 25,
-    currentStepIndicatorSize:30,
-    separatorStrokeWidth: 2,
-    currentStepStrokeWidth: 3,
-    stepStrokeCurrentColor: '#1DCC8B',
-    stepStrokeWidth: 3,
-    stepStrokeFinishedColor: '#1DCC8B',
-    stepStrokeUnFinishedColor: '#aaaaaa',
-    separatorFinishedColor: '#1DCC8B',
-    separatorUnFinishedColor: '#aaaaaa',
-    stepIndicatorFinishedColor: '#1DCC8B',
-    stepIndicatorUnFinishedColor: '#ffffff',
-    stepIndicatorCurrentColor: '#ffffff',
-    stepIndicatorLabelFontSize: 13,
-    currentStepIndicatorLabelFontSize: 13,
-    stepIndicatorLabelCurrentColor: '#1DCC8B',
-    stepIndicatorLabelFinishedColor: '#ffffff',
-    stepIndicatorLabelUnFinishedColor: '#aaaaaa',
-    labelColor: '#999999',
-    labelSize: 13,
-    currentStepLabelColor: '#1DCC8B',
-  };
-  
-  let usernameLenght = username.length;
-  let biographyLenght = biography.length;
+export default function Registro2({route, navigation}) {
+    const { phone, password, mail } = route.params;
+    const [username, onChangeUsername] = React.useState('');
+    const [biography, onChangeBiography] = React.useState('');
+    const labels = ["Credenciales","Cuenta","Profesional","Docs."];
+    const customStyles = {
+        stepIndicatorSize: 25,
+        currentStepIndicatorSize:30,
+        separatorStrokeWidth: 2,
+        currentStepStrokeWidth: 3,
+        stepStrokeCurrentColor: '#1DCC8B',
+        stepStrokeWidth: 3,
+        stepStrokeFinishedColor: '#1DCC8B',
+        stepStrokeUnFinishedColor: '#aaaaaa',
+        separatorFinishedColor: '#1DCC8B',
+        separatorUnFinishedColor: '#aaaaaa',
+        stepIndicatorFinishedColor: '#1DCC8B',
+        stepIndicatorUnFinishedColor: '#ffffff',
+        stepIndicatorCurrentColor: '#ffffff',
+        stepIndicatorLabelFontSize: 13,
+        currentStepIndicatorLabelFontSize: 13,
+        stepIndicatorLabelCurrentColor: '#1DCC8B',
+        stepIndicatorLabelFinishedColor: '#ffffff',
+        stepIndicatorLabelUnFinishedColor: '#aaaaaa',
+        labelColor: '#999999',
+        labelSize: 13,
+        currentStepLabelColor: '#1DCC8B',
+    };
+    
+    let usernameLenght = username.length;
+    let biographyLenght = biography.length;
 
-  let [fontsLoaded] = useFonts({
-    NotoSans_400Regular,
-    Mukta_400Regular,
-  });
-  
-  const SomeAreasEmptyAlert = () => {
+    let [fontsLoaded] = useFonts({
+        NotoSans_400Regular,
+        Mukta_400Regular,
+    });
+    
+    const SomeAreasEmptyAlert = () => {
         Toast.show({
             text1: 'Falta Informacion',
             text2: 'Procura que todos los campos esten llenos.',
@@ -69,63 +70,63 @@ export default function Registro2({navigation}) {
             if(biographyLenght <= 100){
                 BioToShortAlert();
             }else{
-                navigation.navigate('Registro3')
+                navigation.navigate('Registro3', {phone:phone, password:password, mail:mail, username:username, biography:biography})
             }
         }
     };
 
-  return (
-    <View>
-        <View style = {styles.container2}>
-            <TouchableOpacity onPress = {() => navigation.navigate('Registro1')}>
-                <AntDesign name="back" size={27} color="white"/>
-            </TouchableOpacity>
-            <Text style ={styles.topbartext}>Chance al Chile</Text>
-        </View> 
-        <View style = {styles.stepIndicatorContainer}>
-            <StepIndicator
-                customStyles={customStyles}
-                currentPosition={1}
-                labels={labels}
-                stepCount={4}
-            />
+    return (
+        <View>
+            <View style = {styles.container2}>
+                <TouchableOpacity onPress = {() => navigation.navigate('Registro1')}>
+                    <AntDesign name="back" size={27} color="white"/>
+                </TouchableOpacity>
+                <Text style ={styles.topbartext}>Chance al Chile</Text>
+            </View> 
+            <View style = {styles.stepIndicatorContainer}>
+                <StepIndicator
+                    customStyles={customStyles}
+                    currentPosition={1}
+                    labels={labels}
+                    stepCount={4}
+                />
+            </View>
+            <View style={styles.Form}>
+                <TextInput
+                    style={styles.input}
+                    onChangeText={onChangeUsername}
+                    value={username}
+                    placeholder="Nombre de Usuario:"
+                    maxLength={30}
+                />
+                <TextInput
+                    style={styles.Bio}
+                    placeholder="Bio:"
+                    multiline={true}
+                    onChangeText={onChangeBiography}
+                    value={biography}
+                    maxLength={300}
+                />
+                <Text fontFamily='Mukta_400Regular'>Caracteres restantes: {biographyLenght}/300</Text>
+                <Button
+                    title="Siguiente"
+                    titleStyle={{
+                        color: '#fff',
+                        fontSize: 15,
+                        fontFamily:'Mukta_400Regular', 
+                    }}
+                    buttonStyle={{
+                        marginTop: 25,
+                        width: 250,
+                        height: 30,
+                        borderRadius: 20,
+                        backgroundColor: '#448DDB'
+                    }}
+                    onPress = {async() => multipleConditions()}
+                />
+            </View>
         </View>
-        <View style={styles.Form}>
-            <TextInput
-                style={styles.input}
-                onChangeText={onChangeUsername}
-                value={username}
-                placeholder="Nombre de Usuario:"
-                maxLength={30}
-            />
-            <TextInput
-                style={styles.Bio}
-                placeholder="Bio:"
-                multiline={true}
-                onChangeText={onChangeBiography}
-                value={biography}
-                maxLength={300}
-            />
-            <Text fontFamily='Mukta_400Regular'>Caracteres restantes: {biographyLenght}/300</Text>
-            <Button
-                title="Siguiente"
-                titleStyle={{
-                    color: '#fff',
-                    fontSize: 15,
-                    fontFamily:'Mukta_400Regular', 
-                }}
-                buttonStyle={{
-                    marginTop: 25,
-                    width: 250,
-                    height: 30,
-                    borderRadius: 6,
-                    backgroundColor: '#448DDB'
-                }}
-                onPress = {async() => multipleConditions()}
-            />
-        </View>
-    </View>
-  );
+    );
 };
 
 const styles = StyleSheet.create({
