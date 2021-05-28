@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, Image, View, Text, TextInput, TouchableOpacity } from 'react-native';
 import { NotoSans_400Regular, useFonts, Mukta_400Regular } from "@expo-google-fonts/dev";
 import Toast from 'react-native-toast-message';
-import { AntDesign } from '@expo/vector-icons'; 
+import { AntDesign, FontAwesome5, Entypo  } from '@expo/vector-icons'; 
 
 export default function registro({navigation,route}) {
     let [fontsLoaded] = useFonts({
@@ -18,8 +18,34 @@ export default function registro({navigation,route}) {
                 <Text style ={styles.topbartext}>Chance al Chile</Text>
             </View>
             <View style={styles.list}>
-                <View style={styles.list2}>
-                    <Text style={styles.texto1}>{route.params.data.name}</Text>
+                <View style={{alignSelf: 'center', borderBottomColor: '#1DCC8B', borderBottomWidth: 1}}>
+                    <FontAwesome5 style={{ alignSelf: 'center', marginBottom: 10 }} name="city" size={24} color="black" />
+                    <View style={{flexDirection: 'row', marginBottom: 10}}>
+                        <Entypo style={{marginRight: 10}} name="phone" size={20} color="black" />
+                        <Text style={styles.texto1}>56165156</Text>
+                    </View>
+                    <View style={{flexDirection: 'row', marginBottom: 10}}>
+                        <Entypo style={{marginRight: 10}} name="mail" size={20} color="black" />
+                        <Text style={styles.texto1}>hola@hotmail.com</Text>
+                    </View>
+                </View>
+                <View style={{borderBottomColor: '#1DCC8B', borderBottomWidth: 1, marginTop: 20}}>
+                    <View>
+                        <Text style={styles.texto1, { fontWeight: 700 }}>Nombre de la vacante:</Text>
+                        <Text style={styles.texto1}>{route.params.data.vacante}</Text>
+                    </View>
+                    <View>
+                        <Text style={styles.texto1, { fontWeight: 700 }}>Nombre de la empresa:</Text>
+                        <Text style={styles.texto1}>{route.params.data.vacante}</Text>
+                    </View>
+                    <View>
+                        <Text style={styles.texto1, { fontWeight: 700 }}>Descripcion de la vacante:</Text>
+                        <Text style={styles.texto1}>{route.params.data.descripcion}</Text>
+                    </View>
+                    <View>
+                        <Text style={styles.texto1, { fontWeight: 700 }}>Descripcion de la vacante:</Text>
+                        <Text style={styles.texto1}>{route.params.data.descripcion}</Text>
+                    </View>
                 </View>
             </View>
             <View style={styles.div}>
@@ -30,7 +56,7 @@ export default function registro({navigation,route}) {
                         text1:'Matching Realizado',
                         visibilityTime:2000,
                         autoHide:false})}>
-                    <Text style={styles.register}>Match</Text>
+                    <Text style={styles.register}>Contactar</Text>
                 </TouchableOpacity>
             </View>
         </View>
@@ -63,7 +89,7 @@ const styles = StyleSheet.create({
         height: '60px', 
     },
     list: {
-        flexDirection: 'row',
+        flexDirection: 'column',
         width: '90%',
         padding: '10px',
         borderBottomColor: '#1DCC8B',
@@ -83,7 +109,6 @@ const styles = StyleSheet.create({
     texto1: {
         color: 'black',
         fontSize: 16,
-        padding: '5px',
         fontFamily: 'Mukta_400Regular',
     },
     register:{
