@@ -119,7 +119,7 @@ export default function Registro2({route, navigation}) {
                         marginTop: 25,
                         width: 250,
                         height: 30,
-                        borderRadius: 20,
+                        borderRadius: 6,
                         backgroundColor: '#448DDB'
                     }}
                     onPress = {async() => multipleConditions()}

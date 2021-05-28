@@ -65,28 +65,30 @@ export default function Registro4({navigation, route}) {
                 />
             </View>
             <View style={[styles.container_r]}>
+                <Text style ={styles.text_s}>Currículum Vitae (CV):</Text>
                 <FontAwesome.Button name="upload" backgroundColor='#F0F0F0'
                     style={{
                     width: 100,
                     height: 30,
-                    borderRadius: 20,
+                    borderRadius: 6,
                     backgroundColor: '#1CCC8B',
                     paddingLeft: 20,
                     alignSelf: 'center',
                     marginTop: 60,
                     }}>
-                    CV
+                    Upload
                 </FontAwesome.Button>
+                <Text style ={styles.text_s}>Portafolio / Repositorio:</Text>
                 <FontAwesome.Button name="upload" backgroundColor='#F0F0F0'
                     style={{
                     width: 100,
                     height: 30,
-                    borderRadius: 20,
+                    borderRadius: 6,
                     backgroundColor: '#1CCC8B',
                     alignSelf: 'center',
                     marginTop: 80,
                 }}>
-                    Portfolio
+                    Upload
                 </FontAwesome.Button>
                 <Button
                     title="Terminar"
@@ -99,7 +101,7 @@ export default function Registro4({navigation, route}) {
                         marginTop: 80,
                         width: 250,
                         height: 30,
-                        borderRadius: 20,
+                        borderRadius: 6,
                         backgroundColor: '#448DDB'
                     }}
                     onPress = {async() => navigation.navigate('Login')}
@@ -142,4 +144,9 @@ const styles = StyleSheet.create({
         marginTop: 20,
         marginHorizontal: 50
     },
+    text_s: {
+        marginBottom: 10,
+        fontSize: 15,
+        fontFamily: 'Mukta',
+    }
 });

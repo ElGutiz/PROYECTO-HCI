@@ -33,7 +33,7 @@ export default function Login({navigation}) {
     .then(results => results.json())
     .then((json) => {
       if(json.login === true){
-        navigation.navigate('Listado');
+        navigation.navigate('Lista');
       }else{
         wrongPasswordAlert(json.message)
       }
@@ -92,6 +92,7 @@ const styles = StyleSheet.create({
     marginBottom:20,
     fontFamily: 'Mukta_400Regular',
     paddingLeft: 10,
+    color: '#ffffff'
   },
   login:{
     color:'#f0f0f0',
