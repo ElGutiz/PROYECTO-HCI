@@ -22,7 +22,7 @@ export default function registro({navigation}){
         <ScrollView>    
             { registroData.map((item, index) => {
                 return(
-                    <TouchableOpacity key={index} onPress = {() => navigation.navigate('Match')}>
+                    <TouchableOpacity key={index} onPress = {() => navigation.navigate('Match',{data: item})}>
                         <View style = {styles.list}>
                             <Image source={item.icon} style = {styles.icon}></Image>
                             <View style = {styles.list2}>
