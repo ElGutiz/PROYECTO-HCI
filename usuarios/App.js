@@ -5,6 +5,7 @@ import Registro3 from './components/Registro3';
 import Registro4 from './components/Registro4';
 import Lista from './components/listado';
 import Login from './components/Login';
+import Match from './components/Match';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import Toast from 'react-native-toast-message';
@@ -25,6 +26,7 @@ export default function App() {
         <Stack.Screen name ="Registro3" component={Registro3} />
         <Stack.Screen name ="Registro4" component={Registro4} />
         <Stack.Screen name ="Lista" component={Lista} />
+        <Stack.Screen name ="Match" component={Match} />
       </Stack.Navigator>
       <Toast ref={(ref) => Toast.setRef(ref)} />
     </NavigationContainer>
