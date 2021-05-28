@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import { StyleSheet, Image, View, Text, TextInput, TouchableOpacity, ScrollView } from 'react-native';
 import { NotoSans_400Regular, useFonts, Mukta_400Regular, ComingSoon_400Regular } from "@expo-google-fonts/dev";
 import Toast from 'react-native-toast-message';
-
+import { AntDesign } from '@expo/vector-icons';
 
 export default function registro({ navigation, route }) {
 
@@ -42,12 +42,12 @@ export default function registro({ navigation, route }) {
             <View style={styles.container}>
                 <View style={styles.container}>
                     <TouchableOpacity onPress={() => navigation.navigate('Login')}>
-                        <Image style={styles.menu} source={require('../imagenes/flecha.png')}></Image>
+                        <AntDesign name="back" size={27} color="white"/>
                     </TouchableOpacity>
                     <Text style={styles.texto}>Chance al Chile</Text>
                     <View style={styles.container22}>
                         <TouchableOpacity onPress = {() => navigation.navigate('Vacante')} >
-                            <Image style={styles.menu} source={require('../imagenes/float.png')} ></Image>
+                            <AntDesign name="pluscircleo" size={24} color="white" />
                         </TouchableOpacity>
                     </View>
                 </View>

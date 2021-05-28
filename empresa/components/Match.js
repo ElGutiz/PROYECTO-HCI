@@ -4,7 +4,7 @@ import icono from '../imagenes/UserIcon.png';
 import descarga from '../imagenes/descarga.png';
 import { NotoSans_400Regular, useFonts, Mukta_400Regular } from "@expo-google-fonts/dev";
 import Toast from 'react-native-toast-message';
-import { Ionicons, Foundation, FontAwesome } from '@expo/vector-icons';
+import { Ionicons, Foundation, FontAwesome,AntDesign } from '@expo/vector-icons';
 import { Linking } from 'react-native';
 
 export default function registro({ navigation, route }) {
@@ -15,8 +15,8 @@ export default function registro({ navigation, route }) {
     return (
         <View>
             <View style={styles.container}>
-                <TouchableOpacity onPress={() => navigation.navigate('Login')}>
-                    <Image style={styles.menu} source={require('../imagenes/flecha.png')}></Image>
+                <TouchableOpacity onPress={() => navigation.navigate('Listado')}>
+                    <AntDesign name="back" size={27} color="white"/>
                 </TouchableOpacity>
                 <Text style={styles.texto}>Chance al Chile</Text>
             </View>
