@@ -3,7 +3,9 @@ import { StyleSheet, Image, View, Text, TextInput, TouchableOpacity } from 'reac
 import icono from '../imagenes/UserIcon.png';
 import descarga from '../imagenes/descarga.png';
 import { NotoSans_400Regular, useFonts, Mukta_400Regular } from "@expo-google-fonts/dev";
-export default function registro({navigation}) {
+import Toast from 'react-native-toast-message';
+
+export default function registro({navigation,route}) {
     let [fontsLoaded] = useFonts({
         NotoSans_400Regular,
         Mukta_400Regular,
@@ -19,22 +21,20 @@ export default function registro({navigation}) {
             <View style={styles.list}>
                 <Image source={icono} style={styles.icon}></Image>
                 <View style={styles.list2}>
-                    <Text style={styles.texto1}>Walter Saldaña</Text>
-                    <Text style={styles.texto1}>20 años</Text>
+                    <Text style={styles.texto1}>{route.params.data.name}</Text>
+                    <Text style={styles.texto1}>{route.params.data.age}</Text>
                     <Text style={styles.texto1}>Ingeniero en Ciencias de PC</Text>
                 </View>
             </View>
             <View style={styles.div}>
                 <Text style={styles.texto1}>Biografia</Text>
-                <Text style={styles.texto1}>---------------------------------------------------</Text>
-                <Text style={styles.texto1}>---------------------------------------------------</Text>
-                <Text style={styles.texto1}>---------------------------------------------------</Text>
+                <Text style={styles.texto1}>{route.params.data.bio}</Text>
             </View>
             <View style={styles.div}>
                 <Text style={styles.texto1}>Curriculum</Text>
                 <View style={styles.div2}>
                     <Image source={descarga} style={styles.icon}></Image>
-                    <Text style={styles.texto1}>Descargar</Text>
+                    <Text style={styles.texto1}>Descargarr</Text>
                 </View>
                 
             </View>
@@ -49,12 +49,16 @@ export default function registro({navigation}) {
             </View>
             <View style={styles.div}>
                 <TouchableOpacity
-                    activeOpacity={0.8} onPress = {async() => navigation.navigate('Login')} onPressOut = {async() => alert("Chupapi")}>
+                    activeOpacity={0.8} onPress = {async() => navigation.navigate('Listado')} 
+                    onPressOut = {async() => Toast.show({
+                        type:'success',
+                        text1:'Matching Realizado',
+                        visibilityTime:2000,
+                        autoHide:false})}>
                     <Text style={styles.register}>Match</Text>
                 </TouchableOpacity>
             </View>
         </View>
-
     );
 }
 
@@ -79,8 +83,7 @@ const styles = StyleSheet.create({
     icon: {
         resizeMode: "contain",
         width: '60px',
-        height: '60px',
-        
+        height: '60px', 
     },
     list: {
         flexDirection: 'row',
