@@ -38,18 +38,18 @@ const login = async (req, res) => {
                     res.json({
                         nodes: node,
                         login: true,
-                        message: 'Login successful.'
+                        message: 'Login correcto.'
                     });
                 }else{
                     res.json({
                         login: false,
-                        message: 'Wrong password.'
+                        message: 'Contraseña incorrecta.'
                     });
                 }
             }else{
                 res.json({
                     login: false,
-                    message: "The user doesn't exists."
+                    message: "El usuario no existe."
                 });
             }
         })
@@ -68,18 +68,18 @@ const loginEmpresa = async (req, res) => {
                     res.json({
                         nodes: node,
                         login: true,
-                        message: 'Login successful.'
+                        message: 'Login correcto.'
                     });
                 }else{
                     res.json({
                         login: false,
-                        message: 'Wrong password.'
+                        message: 'Contraseña incorrecta.'
                     });
                 }
             }else{
                 res.json({
                     login: false,
-                    message: "The company doesn't exists."
+                    message: "La empresa no está registrada."
                 });
             }
         })
@@ -100,12 +100,12 @@ const register = async (req, res) => {
                 res.json({
                     nodes: node,
                     register: true,
-                    message: 'Register successful.'
+                    message: 'Registro correcto.'
                 });
             }else{
                 res.json({
                     register: false,
-                    message: "Register failed. Please check all the fields."
+                    message: "El registro falló. Por favor, revise los campos."
                 });
             }
         })
@@ -123,12 +123,12 @@ const registerEmpresa = async (req, res) => {
                 res.json({
                     nodes: node,
                     register: true,
-                    message: 'Register successful.'
+                    message: 'Registro correcto.'
                 });
             }else{
                 res.json({
                     register: false,
-                    message: "Register failed. Please check all the fields."
+                    message: "El registro falló. Por favor, revise los campos."
                 });
             }
         })
@@ -173,19 +173,19 @@ const contratar = async (req, res) => {
             if(result.records.length > 0){
                 res.json({
                     match: true,
-                    message: 'Matched successfully.'
+                    message: 'Match correcto.'
                 });
             }else{
                 res.json({
                     match: false,
-                    message: 'You have already hired this user.'
+                    message: 'Ya has hecho match con este usuario anteriormente.'
                 });
             }
         })
         .catch((error) => {
             res.json({
                 match: false,
-                message: 'Match failed. Please try again later.'
+                message: 'Error al conectar con la base. Por favor intente luego.'
             });
         });
 }
@@ -204,14 +204,14 @@ const crearVacante = async (req, res) => {
             }else{
                 res.json({
                     node: null,
-                    message: 'Please check you wrote the correct fields'
+                    message: 'Por favor revisa que todos los campos sean correctos.'
                 });
             }
         })
         .catch((error) => {
             res.json({
                 node: null,
-                message: "Cannot connect with de database."
+                message: "No se pudo conectar con la base de datos."
             });
         });
 }
@@ -236,7 +236,7 @@ const agregarRequisitos = async (req, res) => {
         .catch((error) => {
             res.json({
                 requisitos: false,
-                message: "Cannot connect with de database."
+                message: "No se pudo conectar con la base de datos."
             });
         });
 }
@@ -245,7 +245,7 @@ const agregarRequisitos = async (req, res) => {
 // MATCH VACANTES PARA USUARIOS
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------
 const matchVacantes = async (req, res) => {
-    const query = "MATCH (e:empresas)-[r:tiene]->(v:vacantes)-[r2:requiere]->(t:tags)-[r3:sabe]->(u:usuarios) WHERE u.usuario=$usuario AND NOT (e)-[:contrato]->(u) RETURN v AS node, COUNT(r3) AS n ORDER BY n DESC";
+    const query = "MATCH (e:empresas)-[r:tiene]->(v:vacantes)-[r2:requiere]->(t:tags)-[r3:sabe]->(u:usuarios) WHERE u.usuario=$usuario AND NOT (e)-[:contrato]->(u) RETURN (e)--(v) AS node, COUNT(r3) AS n ORDER BY n DESC";
     session.run(query, { usuario: req.params.usuario })
         .then((result) => {
             response = result.records;
@@ -341,6 +341,31 @@ const getEmpresa = async (req, res) => {
 }
 
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+// AGERGAR TAGS A USUARIO
+//--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+const addTags = async (req, res) => {
+    const { usuario, tag } = req.body;
+    const query = "MATCH (u:usuarios), (t:tags) WHERE u.usuario=$usuario AND t.nombre=$tag AND NOT (t)-[:sabe]->(u) CREATE (t)-[r:sabe]->(u) RETURN (t)-[r]->(u) AS node";
+    session.run(query, { usuario, tag })
+        .then((result) => {
+            response = result.records;
+            if(response.length === 1){
+                node = response[0].get('node');
+                res.json({
+                    node: node,
+                    tag: true
+                });
+            }else{
+                res.json({
+                    tag: false,
+                    message: "No se pudo agregar la tag "+tag+'.'
+                });
+            }
+        })
+        .catch((error) => console.log(error));
+}
+
+//--------------------------------------------------------------------------------------------------------------------------------------------------------------------
 // EXPORT MODULE
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------
 module.exports = {
@@ -356,5 +381,6 @@ module.exports = {
     matchVacantes,
     getUser,
     getVacante,
-    getEmpresa
+    getEmpresa, 
+    addTags
 };
