@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import { StyleSheet, Text, View, Image, TextInput, TouchableOpacity } from 'react-native';
 import { NotoSans_400Regular, useFonts, Mukta_400Regular } from "@expo-google-fonts/dev"; 
+import Toast from 'react-native-toast-message';
 
 export default function Login({navigation}) {
   let [fontsLoaded] = useFonts({
@@ -10,7 +11,16 @@ export default function Login({navigation}) {
 
   const state = {
     logged:false};
-
+  
+  const wrongPasswordAlert = (mensaje) => {
+    Toast.show({
+        text1: 'Credenciales incorrectas',
+        text2: mensaje,
+        autoHide: true,
+        visibilityTime: 2000,
+        type: 'error',
+    });
+  }
 
   const loginUser = async(username, password) => {
     const login = await fetch('http://stw-uvg.site:3186/login', {
@@ -25,7 +35,7 @@ export default function Login({navigation}) {
       if(json.login === true){
         navigation.navigate('Registro1');
       }else{
-        //TOAST CON json.mensaje
+        wrongPasswordAlert(json.message)
       }
     });
   };
@@ -78,7 +88,7 @@ const styles = StyleSheet.create({
   input:{
     borderWidth:3,
     borderColor:'#f0f0f0',
-    borderRadius:50,
+    borderRadius:6,
     marginBottom:20,
     fontFamily: 'Mukta_400Regular',
     paddingLeft: 10,
@@ -91,11 +101,12 @@ const styles = StyleSheet.create({
     paddingHorizontal: 60,
     marginTop: 10, 
     paddingVertical:5,
-    borderRadius: 50,
+    borderRadius: 6,
   },
   register:{
     fontFamily:'Mukta_400Regular',
     fontStyle:'italic',
+    textDecorationLine: 'underline',
     fontSize:14,
     color:'#f0f0f0',
     marginTop:20,

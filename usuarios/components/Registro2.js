@@ -9,7 +9,7 @@ import StepIndicator from 'react-native-step-indicator';
 export default function Registro2({navigation}) {
   const [username, onChangeUsername] = React.useState('');
   const [biography, onChangeBiography] = React.useState('');
-  const labels = ["Credenciales","Cuenta","Profesional","Docs."];
+  const labels = ["Cuenta","Datos","Profesional","Docs."];
   const customStyles = {
     stepIndicatorSize: 25,
     currentStepIndicatorSize:30,
@@ -118,7 +118,7 @@ export default function Registro2({navigation}) {
                     marginTop: 25,
                     width: 250,
                     height: 30,
-                    borderRadius: 20,
+                    borderRadius: 6,
                     backgroundColor: '#448DDB'
                 }}
                 onPress = {async() => multipleConditions()}
@@ -180,6 +180,7 @@ const styles = StyleSheet.create({
         paddingLeft: 10,
     },
     stepIndicatorContainer: {
-        marginTop: 20
+        marginTop: 20,
+        marginHorizontal: 50
     },
 });

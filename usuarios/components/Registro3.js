@@ -9,7 +9,7 @@ import AppLoading from 'expo-app-loading';
 import StepIndicator from 'react-native-step-indicator';
 
 const mainColor = '#1CCC8B';
-const labels = ["Credenciales","Cuenta","Profesional","Docs."];
+const labels = ["Cuenta","Datos","Profesional","Docs."];
 const customStyles = {
     stepIndicatorSize: 25,
     currentStepIndicatorSize:30,
@@ -134,7 +134,7 @@ export default class Registro3 extends React.Component {
                                 buttonStyle={{
                                     width: 240,
                                     height: 30,
-                                    borderRadius: 20,
+                                    borderRadius: 6,
                                     backgroundColor: '#448DDB'
                                 }}
                                 onPress = {async() => this.props.navigation.navigate('Registro4')}
@@ -168,9 +168,9 @@ const styles = StyleSheet.create({
         width:250,
         textAlign: 'center',
         fontSize: 15,
-        borderRadius: 20,
+        borderRadius: 6,
         fontFamily: 'Mukta',
-        paddingLeft: 10,
+        paddingLeft: 10
     },
     container: {
         flex: 1,
@@ -178,6 +178,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         backgroundColor: mainColor,
         position:'absolute',
+        top: -50
     },
     textInput: {
         height: 40,
@@ -207,7 +208,8 @@ const styles = StyleSheet.create({
         paddingLeft: 10,
     },
     stepIndicatorContainer: {
-        marginTop: 20
+        marginTop: 20,
+        marginHorizontal: 50
     },
     text_s: {
         marginBottom: 10,

@@ -11,7 +11,7 @@ export default function Registro1({navigation}) {
   const [mail, onChangeMail] = React.useState('');
   const [phone, onChangePhone] = React.useState('');
 
-  const labels = ["Credenciales","Cuenta","Profesional","Docs."];
+  const labels = ["Cuenta","Datos","Profesional","Docs."];
   const customStyles = {
     stepIndicatorSize: 25,
     currentStepIndicatorSize:30,
@@ -157,7 +157,7 @@ export default function Registro1({navigation}) {
                     marginTop: 30,
                     width: 250,
                     height: 30,
-                    borderRadius: 20,
+                    borderRadius: 6,
                     backgroundColor: '#448DDB'
                 }}
                 onPress = {async() => multipleConditions()}
@@ -231,6 +231,7 @@ const styles = StyleSheet.create({
         paddingLeft: 10,
     },
     stepIndicatorContainer: {
-        marginTop: 20
+        marginTop: 20,
+        marginHorizontal: 50
     }
 });

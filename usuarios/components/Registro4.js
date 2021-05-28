@@ -7,7 +7,7 @@ import Toast from 'react-native-toast-message';
 import StepIndicator from 'react-native-step-indicator';
 
 export default function Registro4({navigation}) {
-    const labels = ["Credenciales","Cuenta","Profesional","Docs."];
+    const labels = ["Cuenta","Datos","Profesional","Docs."];
   const customStyles = {
     stepIndicatorSize: 25,
     currentStepIndicatorSize:30,
@@ -68,9 +68,8 @@ export default function Registro4({navigation}) {
                 style={{
                 width: 100,
                 height: 30,
-                borderRadius: 20,
+                borderRadius: 6,
                 backgroundColor: '#1CCC8B',
-                paddingLeft: 20,
                 alignSelf: 'center',
                 marginTop: 60,
                 }}>
@@ -80,7 +79,7 @@ export default function Registro4({navigation}) {
                 style={{
                 width: 100,
                 height: 30,
-                borderRadius: 20,
+                borderRadius: 6,
                 backgroundColor: '#1CCC8B',
                 alignSelf: 'center',
                 marginTop: 80,
@@ -98,7 +97,7 @@ export default function Registro4({navigation}) {
                     marginTop: 80,
                     width: 250,
                     height: 30,
-                    borderRadius: 20,
+                    borderRadius: 6,
                     backgroundColor: '#448DDB'
                 }}
                 onPress = {async() => navigation.navigate('Login')}
@@ -138,6 +137,7 @@ const styles = StyleSheet.create({
         alignSelf: 'center',
     },
     stepIndicatorContainer: {
-        marginTop: 20
+        marginTop: 20,
+        marginHorizontal: 50
     },
 });
