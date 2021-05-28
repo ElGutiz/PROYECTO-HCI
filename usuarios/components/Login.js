@@ -33,7 +33,7 @@ export default function Login({navigation}) {
     .then(results => results.json())
     .then((json) => {
       if(json.login === true){
-        navigation.navigate('Registro1');
+        navigation.navigate('Listado');
       }else{
         wrongPasswordAlert(json.message)
       }
@@ -54,11 +54,11 @@ export default function Login({navigation}) {
       <Text style={styles.text}>Password:</Text>
       <TextInput onChangeText={onChangePassword} style={styles.input} value={input2}></TextInput>
       <TouchableOpacity
-      activeOpacity={0.8} onPress = {() => loginUser(input1, input2)}>
+        activeOpacity={0.8} onPress = {() => loginUser(input1, input2)}>
         <Text style={styles.login}>LOG IN</Text>
       </TouchableOpacity>
       <TouchableOpacity
-      activeOpacity={0.8} onPress = {() =>navigation.navigate('Registro1') }>
+        activeOpacity={0.8} onPress = {() =>navigation.navigate('Registro1') }>
         <Text style={styles.register}>Register</Text>
       </TouchableOpacity>
     </View>

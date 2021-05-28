@@ -12,23 +12,39 @@ export default function Login({ navigation }) {
     Mukta_400Regular,
   });
 
-  const loginEmpresa = (username, password) =>{
-    if(username === null || password === null){
-      Credenciales(username, password)
-    }else{
-      navigation.navigate('Listado')
-    }
+  const Credenciales = () =>{
+    Toast.show({
+      type:'error',
+      text1:'ERROR',
+      text2:'Ingrese Credenciales',
+      autoHide: true,
+      visibilityTime: 2000
+    });
   }
 
-  const Credenciales = (username, password) =>{
-      Toast.show({
-        type:'error',
-        text1:'ERROR',
-        text2:'Ingrese credenciales',
-        autoHide: true,
-        visibilityTime: 2000
-      });
-  }
+  const loginEmpresa = async(username, password) => {
+    
+    const login = await fetch('http://stw-uvg.site:3186/loginEmpresa', {
+      method:'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'usuario':username,
+        'contrasena':password
+      }
+    })
+    .then(results => results.json())
+    .then((json) => {
+      if(json.login === true){
+        console.log("listado")
+        navigation.navigate('Listado');
+      }else{
+        WrongDataAlert();
+        console.log("no listado")
+      }
+    });
+    
+  };
+
 
   const [input1, onChangeUserName] = useState(null);
   const [input2, onChangePassword] = useState(null);
