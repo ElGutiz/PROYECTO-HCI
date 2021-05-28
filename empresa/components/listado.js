@@ -1,16 +1,46 @@
 import React from 'react';
 import { StyleSheet, Image, View, Text, TextInput, TouchableOpacity, ScrollView } from 'react-native';
-import { registroData } from "../components/listadoData";
-import { NotoSans_400Regular, useFonts, Mukta_400Regular } from "@expo-google-fonts/dev";
+import { NotoSans_400Regular, useFonts, Mukta_400Regular, ComingSoon_400Regular } from "@expo-google-fonts/dev";
+import Toast from 'react-native-toast-message';
 
 
-export default function registro({ navigation }) {
+export default function registro({ navigation, route }) {
+
+    const registroData1 = []
+    const registroData = []
+
+    const loginEmpresa = async() => {
+        console.log("AQUI")
+        const login = await fetch(`http://stw-uvg.site:3186/matchusers/${route.params.nombreEmpresa}`, {
+          method:'GET',
+          headers: {
+            'Content-Type': 'application/json',
+          }
+        }, {mode:'no-cors'})
+        .then(results => results.json())
+        .then((json) => {
+            registroData1.push(json)
+            registroData1[0].nodes.map((data) =>{
+                registroData.push(data.node.properties)
+            })
+            Toast.show({
+                type:'success',
+                text1:'Recuperando Data...',
+                text2:json.message,
+                autoHide: true,
+                visibilityTime: 1000
+              });
+        });    
+      };
+
     let [fontsLoaded] = useFonts({
         NotoSans_400Regular,
         Mukta_400Regular,
     });
+
+    loginEmpresa()
     return (
-        <View scroll='false'>
+        <View>
             <View style={styles.container}>
                 <View style={styles.container}>
                     <TouchableOpacity onPress={() => navigation.navigate('Login')}>
@@ -31,9 +61,9 @@ export default function registro({ navigation }) {
                     return (
                         <TouchableOpacity key={index} onPress={() => navigation.navigate('Match', { data: item })}>
                             <View style={styles.list}>
-                                <Image source={item.icon} style={styles.icon}></Image>
+                                <Image source={item.foto} style={styles.icon}></Image>
                                 <View style={styles.list2}>
-                                    <Text style={styles.texto1}>{item.name}</Text>
+                                    <Text style={styles.texto1}>{item.usuario}</Text>
                                     <Text style={styles.texto1}>{item.bio}</Text>
                                 </View>
                             </View>

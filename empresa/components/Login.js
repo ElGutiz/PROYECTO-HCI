@@ -20,7 +20,7 @@ export default function Login({ navigation }) {
     });
   }
 
-  const loginEmpresa = async(username, password) => {
+  const loginEmpresas = async(username, password) => {
     
     const login = await fetch('http://stw-uvg.site:3186/loginEmpresa', {
       method:'GET',
@@ -33,8 +33,7 @@ export default function Login({ navigation }) {
     .then(results => results.json())
     .then((json) => {
       if(json.login === true){
-        console.log("listado")
-        navigation.navigate('Listado');
+        navigation.navigate('Listado', {nombreEmpresa:username});
       }else{
         Toast.show({
           type:'error',
