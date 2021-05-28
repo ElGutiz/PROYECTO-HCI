@@ -2,8 +2,6 @@ import React, {useState, setState} from 'react';
 import { StyleSheet, Text, View, Image, TextInput, TouchableOpacity } from 'react-native';
 import { NotoSans_400Regular, useFonts, Mukta_400Regular } from "@expo-google-fonts/dev";
 import Toast from 'react-native-toast-message';
-import { State } from 'react-native-gesture-handler';
-
 
 export default function Login({ navigation }) {
   
@@ -38,8 +36,13 @@ export default function Login({ navigation }) {
         console.log("listado")
         navigation.navigate('Listado');
       }else{
-        WrongDataAlert();
-        console.log("no listado")
+        Toast.show({
+          type:'error',
+          text1:'ERROR',
+          text2:json.message,
+          autoHide: true,
+          visibilityTime: 2000
+        });
       }
     });
     
@@ -63,7 +66,7 @@ export default function Login({ navigation }) {
       <Text style={styles.text}>Password:</Text>
       <TextInput onChangeText = {onChangePassword} style={styles.input} value={input2} secureTextEntry={true}></TextInput>
       <TouchableOpacity
-        activeOpacity={0.8} onPress={async() => loginEmpresa(input1, input2)} >
+        activeOpacity={0.8} onPress={async() => input1 === null || input2 === null ? Credenciales():loginEmpresas(input1, input2)} >
         <Text style={styles.login}>LOG IN</Text>
       </TouchableOpacity>
       <TouchableOpacity
