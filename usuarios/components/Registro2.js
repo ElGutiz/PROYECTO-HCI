@@ -115,7 +115,7 @@ export default class Registro2 extends React.Component {
                                 </FontAwesome.Button>
                             </View>
                             <Button
-                                title="Next"
+                                title="Finish"
                                 titleStyle={{
                                     color: '#fff',
                                     fontSize: 16, 
@@ -128,6 +128,7 @@ export default class Registro2 extends React.Component {
                                     borderRadius: 20,
                                     backgroundColor: '#448DDB'
                                 }}
+                                onPress = {() => this.props.navigation.navigate('Login')}
                             />
                         </View>
                     </View>

@@ -16,8 +16,8 @@ export default function Login({navigation}) {
     navigation.navigate('Registro1')
   };
 
-  const [input1, onChangeUsername] = useState(null)
-  const [input2, onChangePassword] = useState(null)
+  const [input1, onChangeUsername] = useState('')
+  const [input2, onChangePassword] = useState('')
 
   return (
     <View style={styles.container}>
