@@ -52,6 +52,28 @@ export default function Registro2({navigation}) {
         });
     }
 
+    const BioToShortAlert = () => {
+        Toast.show({
+            text1: 'Tu bibliografia es muy corta',
+            text2: 'Una buena bibliografia debe tener mas de 100 caracteres.',
+            autoHide: true,
+            visibilityTime: 2000,
+            type: 'error',
+        });
+    }
+
+    const multipleConditions = () => {
+        if(usernameLenght === 0 || biographyLenght === 0){
+            SomeAreasEmptyAlert();
+        }else{
+            if(biographyLenght <= 100){
+                BioToShortAlert();
+            }else{
+                navigation.navigate('Registro3')
+            }
+        }
+    };
+
   return (
     <View>
         <View style = {styles.container2}>
@@ -73,7 +95,7 @@ export default function Registro2({navigation}) {
                 style={styles.input}
                 onChangeText={onChangeUsername}
                 value={username}
-                placeholder="Username:"
+                placeholder="Nombre de Usuario:"
                 maxLength={30}
             />
             <TextInput
@@ -82,7 +104,9 @@ export default function Registro2({navigation}) {
                 multiline={true}
                 onChangeText={onChangeBiography}
                 value={biography}
+                maxLength={300}
             />
+            <Text fontFamily='Mukta_400Regular'>Caracteres restantes: {biographyLenght}/300</Text>
             <Button
                 title="Siguiente"
                 titleStyle={{
@@ -91,13 +115,13 @@ export default function Registro2({navigation}) {
                     fontFamily:'Mukta_400Regular', 
                 }}
                 buttonStyle={{
-                    marginTop: 20,
+                    marginTop: 25,
                     width: 250,
                     height: 30,
                     borderRadius: 20,
                     backgroundColor: '#448DDB'
                 }}
-                onPress = {async() => {usernameLenght === 0 || biographyLenght === 0 ? SomeAreasEmptyAlert() : navigation.navigate('Registro3')}}
+                onPress = {async() => multipleConditions()}
             />
         </View>
     </View>
@@ -133,7 +157,8 @@ const styles = StyleSheet.create({
         height: 240,
         width: 250,
         margin: 12,
-        marginTop: 20,
+        marginTop: 40,
+        marginBottom: 20,
         borderWidth: 1,
         backgroundColor: '#EBEBEB',
         color: '#000',

@@ -10,6 +10,7 @@ export default function Registro1({navigation}) {
   const [password, onChangePassword] = React.useState('');
   const [mail, onChangeMail] = React.useState('');
   const [phone, onChangePhone] = React.useState('');
+
   const labels = ["Credenciales","Cuenta","Profesional","Docs."];
   const customStyles = {
     stepIndicatorSize: 25,
@@ -33,7 +34,7 @@ export default function Registro1({navigation}) {
     labelColor: '#999999',
     labelSize: 13,
     currentStepLabelColor: '#1DCC8B',
-  }  
+  }
   
   let phoneLenght = phone.length;
   let passwordLenght = password.length;
@@ -53,6 +54,56 @@ export default function Registro1({navigation}) {
             type: 'error',
         });
     }
+
+    const PassToShortAlert = () => {
+        Toast.show({
+            text1: 'Contraseña no valida',
+            text2: 'La contraseña debe ser minimo 8 caracteres',
+            autoHide: true,
+            visibilityTime: 2000,
+            type: 'error',
+        });
+    }
+
+    const MailWrongAlert = () => {
+        Toast.show({
+            text1: 'Correo no valido',
+            text2: 'El correo introducido no es correcto',
+            autoHide: true,
+            visibilityTime: 2000,
+            type: 'error',
+        });
+    }
+
+    const PhoneToAlert = () => {
+        Toast.show({
+            text1: 'Numero de telefono invalido',
+            autoHide: true,
+            visibilityTime: 2000,
+            type: 'error',
+        });
+    }
+
+    const multipleConditions = () => {
+        let reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w\w+)+$/;
+        if(phoneLenght === 0 || mailLenght === 0){
+            SomeAreasEmptyAlert();
+        }else{
+            if(passwordLenght < 8){
+                PassToShortAlert();
+            }else{
+                if(reg.test(mail) === false){
+                    MailWrongAlert();
+                }else{
+                    if(phoneLenght != 8){
+                        PhoneToAlert();
+                    }else{
+                    navigation.navigate('Registro2')
+                    }
+                }
+            }
+        }
+    };
 
   return (
     <View>
@@ -103,13 +154,13 @@ export default function Registro1({navigation}) {
                     fontFamily:'Mukta_400Regular', 
                 }}
                 buttonStyle={{
-                    marginTop: 20,
+                    marginTop: 30,
                     width: 250,
                     height: 30,
                     borderRadius: 20,
                     backgroundColor: '#448DDB'
                 }}
-                onPress = {async() => {phoneLenght === 0 || passwordLenght === 0 || mailLenght === 0 ? SomeAreasEmptyAlert() : navigation.navigate('Registro2')}}
+                onPress = {async() => multipleConditions()}
             />
         </View>
     </View>
@@ -138,7 +189,8 @@ const styles = StyleSheet.create({
         height: 40,
         width: 250,
         margin: 12,
-        marginTop: 20,
+        marginTop: 40,
+        marginBottom: 40,
         borderWidth: 1,
         borderRightColor: 'transparent',
         borderTopColor: 'transparent',

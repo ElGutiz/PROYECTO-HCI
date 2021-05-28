@@ -71,7 +71,8 @@ export default function Registro4({navigation}) {
                 borderRadius: 20,
                 backgroundColor: '#1CCC8B',
                 paddingLeft: 20,
-                alignSelf: 'center'
+                alignSelf: 'center',
+                marginTop: 60,
                 }}>
                 CV
             </FontAwesome.Button>
@@ -82,7 +83,7 @@ export default function Registro4({navigation}) {
                 borderRadius: 20,
                 backgroundColor: '#1CCC8B',
                 alignSelf: 'center',
-                marginTop: 20,
+                marginTop: 80,
             }}>
                 Portfolio
             </FontAwesome.Button>
@@ -94,7 +95,7 @@ export default function Registro4({navigation}) {
                     fontFamily:'Mukta_400Regular', 
                 }}
                 buttonStyle={{
-                    marginTop: 20,
+                    marginTop: 80,
                     width: 250,
                     height: 30,
                     borderRadius: 20,

@@ -90,6 +90,7 @@ export default class Registro3 extends React.Component {
                     </View>
                     <View style={styles.container_c_m}>
                         <View style={[styles.containerP, {transform: [{ translateY: 20 }]}]}>
+                            <Text style={styles.text_s}>Escoge tu carrera</Text>
                             <Picker
                                 style={styles.picker_s}
                                 selectedValue={this.selectedLanguage}
@@ -122,7 +123,7 @@ export default class Registro3 extends React.Component {
                                 keysForTag={', '}
                             />
                         </View>
-                        <View style={[{transform: [{ translateY: 450 }]}]}>
+                        <View style={[{transform: [{ translateY: 400 }]}]}>
                             <Button
                                 title="Siguiente"
                                 titleStyle={{
@@ -131,7 +132,6 @@ export default class Registro3 extends React.Component {
                                     fontFamily: 'Mukta',
                                 }}
                                 buttonStyle={{
-                                    marginTop: 20,
                                     width: 240,
                                     height: 30,
                                     borderRadius: 20,
@@ -208,5 +208,10 @@ const styles = StyleSheet.create({
     },
     stepIndicatorContainer: {
         marginTop: 20
+    },
+    text_s: {
+        marginBottom: 10,
+        fontSize: 15,
+        fontFamily: 'Mukta',
     },
 });
