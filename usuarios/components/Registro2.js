@@ -1,201 +1,145 @@
-import React, { useState } from "react";
-import { StyleSheet, TextInput, View, Text, Dimensions, TouchableOpacity } from "react-native";
-import { Button, Icon } from 'react-native-elements';
-import {Picker} from '@react-native-picker/picker';
-import { AntDesign, FontAwesome } from '@expo/vector-icons';
-import TagInput from 'react-native-tags-input';
-import * as Font from 'expo-font'; 
-import AppLoading from 'expo-app-loading';
+import React from "react";
+import { StyleSheet, TextInput, View, Text, TouchableOpacity, Alert } from "react-native";
+import { Button } from 'react-native-elements';
+import { AntDesign } from '@expo/vector-icons';
+import { NotoSans_400Regular, useFonts, Mukta_400Regular } from "@expo-google-fonts/dev"; 
+import Toast from 'react-native-toast-message';
+import StepIndicator from 'react-native-step-indicator';
 
-const mainColor = '#1CCC8B';
-let customFonts = {
-    'Mukta': require('../assets/Mukta-Regular.ttf')
-}
+export default function Registro2({navigation}) {
+  const [username, onChangeUsername] = React.useState('');
+  const [biography, onChangeBiography] = React.useState('');
+  const labels = ["Credenciales","Cuenta","Profesional","Docs."];
+  const customStyles = {
+    stepIndicatorSize: 25,
+    currentStepIndicatorSize:30,
+    separatorStrokeWidth: 2,
+    currentStepStrokeWidth: 3,
+    stepStrokeCurrentColor: '#1DCC8B',
+    stepStrokeWidth: 3,
+    stepStrokeFinishedColor: '#1DCC8B',
+    stepStrokeUnFinishedColor: '#aaaaaa',
+    separatorFinishedColor: '#1DCC8B',
+    separatorUnFinishedColor: '#aaaaaa',
+    stepIndicatorFinishedColor: '#1DCC8B',
+    stepIndicatorUnFinishedColor: '#ffffff',
+    stepIndicatorCurrentColor: '#ffffff',
+    stepIndicatorLabelFontSize: 13,
+    currentStepIndicatorLabelFontSize: 13,
+    stepIndicatorLabelCurrentColor: '#1DCC8B',
+    stepIndicatorLabelFinishedColor: '#ffffff',
+    stepIndicatorLabelUnFinishedColor: '#aaaaaa',
+    labelColor: '#999999',
+    labelSize: 13,
+    currentStepLabelColor: '#1DCC8B',
+  };
+  
+  let usernameLenght = username.length;
+  let biographyLenght = biography.length;
 
-export default class Registro2 extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            tags: {
-            tag: '',
-            tagsArray: []
-            },
-            tagsColor: mainColor,
-            tagsText: '#fff',
-            selectedLanguage: '',
-        };
+  let [fontsLoaded] = useFonts({
+    NotoSans_400Regular,
+    Mukta_400Regular,
+  });
+  
+  const SomeAreasEmptyAlert = () => {
+        Toast.show({
+            text1: 'Falta Informacion',
+            text2: 'Procura que todos los campos esten llenos.',
+            autoHide: true,
+            visibilityTime: 2000,
+            type: 'error',
+        });
     }
-       
-    state = {
-        fontsLoaded: false,
-    };
 
-    async _loadFontsAsync() {
-        await Font.loadAsync(customFonts);
-        this.setState({ fontsLoaded: true });
-    }
-
-    componentDidMount() {
-        this._loadFontsAsync();
-    }
-    // const [selectedLanguage, setSelectedLanguage] = useState();
-    updateTagState = (state) => {
-        this.setState({
-            tags: state
-        })
-    };
-
-    render(){
-        if (this.state.fontsLoaded){
-            return (
-                <View>
-                    <View style = {styles.container2}>
-                        <TouchableOpacity onPress={() => this.props.navigation.navigate('Registro1')}>
-                            <AntDesign name="back" size={27} color="white"/>
-                        </TouchableOpacity>
-                        <Text style ={styles.topbartext}>Chance al Chile</Text>
-                    </View> 
-                    <View style={styles.container_c_m}>
-                        <View style={[styles.containerP, {transform: [{ translateY: 20 }]}]}>
-                            <Text style={styles.text_s}>Career</Text>
-                            <Picker
-                                style={styles.picker_s}
-                                selectedValue={this.selectedLanguage}
-                                onValueChange={(itemValue, itemIndex) =>
-                                    this.setState({selectedLanguage: itemValue})
-                                }>
-                                <Picker.Item label="Ingenieria en Sistemas" value="ies" />
-                                <Picker.Item label="Robotica" value="robo" />
-                                <Picker.Item label="Ingenieria en Alimentos" value="iea" />
-                                <Picker.Item label="Administracion de empresas" value="ade" />
-                            </Picker>
-                        </View>
-                        <View style={[styles.container, {transform: [{ translateY: 150 }]}]} >
-                            <TagInput
-                                updateState={this.updateTagState}
-                                tags={this.state.tags}
-                                placeholder="Tags..."                            
-                                label='Press comma & space to add a tag'
-                                labelStyle={{color: '#fff'}}
-                                leftElement={<Icon name={'tag-multiple'} type={'material-community'} color={this.state.tagsText}/>}
-                                leftElementContainerStyle={{marginLeft: 3}}
-                                containerStyle={{width: (Dimensions.get('window').width - 120)}}
-                                inputContainerStyle={[styles.textInput, {backgroundColor: this.state.tagsColor}]}
-                                inputStyle={{color: this.state.tagsText}}
-                                onFocus={() => this.setState({tagsColor: '#fff', tagsText: mainColor})}
-                                onBlur={() => this.setState({tagsColor: mainColor, tagsText: '#fff'})}
-                                autoCorrect={false}
-                                tagStyle={styles.tag}
-                                tagTextStyle={styles.tagText}
-                                keysForTag={', '}
-                            />
-                        </View>
-                        <View style={[{transform: [{ translateY: 450 }]}]}>
-                            <View style={[styles.container_r, {transform: [{ translateY: 10 }]}]}>
-                                <FontAwesome.Button name="upload" backgroundColor='#F0F0F0'
-                                style={{
-                                    width: 100,
-                                    height: 30,
-                                    borderRadius: 20,
-                                    backgroundColor: '#1CCC8B',
-                                    paddingLeft: 20,
-                                    marginRight: 15,
-                                }}>
-                                    CV
-                                </FontAwesome.Button>
-                                <FontAwesome.Button name="upload" backgroundColor='#F0F0F0'
-                                style={{
-                                    width: 100,
-                                    height: 30,
-                                    borderRadius: 20,
-                                    backgroundColor: '#1CCC8B',
-                                    marginLeft: 15,
-                                }}>
-                                    Portfolio
-                                </FontAwesome.Button>
-                            </View>
-                            <Button
-                                title="Finish"
-                                titleStyle={{
-                                    color: '#fff',
-                                    fontSize: 16, 
-                                    fontFamily: 'Mukta',
-                                }}
-                                buttonStyle={{
-                                    marginTop: 20,
-                                    width: 240,
-                                    height: 30,
-                                    borderRadius: 20,
-                                    backgroundColor: '#448DDB'
-                                }}
-                                onPress = {() => this.props.navigation.navigate('Login')}
-                            />
-                        </View>
-                    </View>
-                </View>
-            );
-        } else {
-            return <AppLoading/>
-        }
-    }
+  return (
+    <View>
+        <View style = {styles.container2}>
+            <TouchableOpacity onPress = {() => navigation.navigate('Registro1')}>
+                <AntDesign name="back" size={27} color="white"/>
+            </TouchableOpacity>
+            <Text style ={styles.topbartext}>Chance al Chile</Text>
+        </View> 
+        <View style = {styles.stepIndicatorContainer}>
+            <StepIndicator
+                customStyles={customStyles}
+                currentPosition={1}
+                labels={labels}
+                stepCount={4}
+            />
+        </View>
+        <View style={styles.Form}>
+            <TextInput
+                style={styles.input}
+                onChangeText={onChangeUsername}
+                value={username}
+                placeholder="Username:"
+                maxLength={30}
+            />
+            <TextInput
+                style={styles.Bio}
+                placeholder="Bio:"
+                multiline={true}
+                onChangeText={onChangeBiography}
+                value={biography}
+            />
+            <Button
+                title="Siguiente"
+                titleStyle={{
+                    color: '#fff',
+                    fontSize: 15,
+                    fontFamily:'Mukta_400Regular', 
+                }}
+                buttonStyle={{
+                    marginTop: 20,
+                    width: 250,
+                    height: 30,
+                    borderRadius: 20,
+                    backgroundColor: '#448DDB'
+                }}
+                onPress = {async() => {usernameLenght === 0 || biographyLenght === 0 ? SomeAreasEmptyAlert() : navigation.navigate('Registro3')}}
+            />
+        </View>
+    </View>
+  );
 };
 
 const styles = StyleSheet.create({
-    container_c_m: {
-        flexDirection:'column',
-        paddingVertical:10,
-        justifyContent: 'center',
-        alignItems: 'center'
-    },
-    containerM: {
-        flexDirection: 'row',
-        backgroundColor: '#1DCC8B',
-        paddingVertical: 10,
-    },
-    containerP: {
-        position:'absolute'
-    },
-    container_r: {
-        flexDirection:'row',
-        alignSelf: 'center',
-        marginBottom: 20,     
-    },
-    picker_s: {
-        width:250,
-        textAlign: 'center',
-        fontSize: 15,
-        borderRadius: 20,
-        fontFamily: 'Mukta',
-        paddingLeft: 10,
-    },
-    text_s: {
-        marginBottom: 10,
-        fontSize: 20,
-        fontFamily: 'Mukta',
-    },
-    container: {
-        flex: 1,
+    Form: {
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: mainColor,
-        position:'absolute',
     },
-    textInput: {
+    texto2:{
+        color:'#f0f0f0',
+        fontFamily:'Mukta_400Regular',
+        marginLeft:20,
+        fontSize:22,
+    },
+    input: {
         height: 40,
-        borderColor: 'white',
+        width: 250,
+        margin: 12,
+        marginTop: 20,
         borderWidth: 1,
-        marginTop: 8,
-        borderRadius: 5,
-        padding: 3,
+        borderRightColor: 'transparent',
+        borderTopColor: 'transparent',
+        borderLeftColor: 'transparent',
+        borderBottomColor:'#1DCC8B',
+        paddingLeft: 10,
+        paddingRight: 10,
+        fontFamily:'Mukta_400Regular',
     },
-    tag: {
-        backgroundColor: '#fff'
-    },
-    tagText: {
-        color: mainColor
-    },
-    trye: {
-        position: 'absolute'
+    Bio: {
+        height: 240,
+        width: 250,
+        margin: 12,
+        marginTop: 20,
+        borderWidth: 1,
+        backgroundColor: '#EBEBEB',
+        color: '#000',
+        padding: 5,
+        borderColor: '#D0D0D0',
+        fontFamily:'Mukta_400Regular',
     },
     container2: {
         flexDirection: 'row',
@@ -205,9 +149,12 @@ const styles = StyleSheet.create({
     },
     topbartext: {
         color: '#f0f0f0',
-        fontFamily: 'Mukta',
+        fontFamily: 'Mukta_400Regular',
         marginLeft: 20,
         fontSize: 22,
         paddingLeft: 10,
+    },
+    stepIndicatorContainer: {
+        marginTop: 20
     },
 });
