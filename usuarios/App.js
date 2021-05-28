@@ -4,6 +4,7 @@ import Registro2 from './components/Registro2';
 import Login from './components/Login';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+import Toast from 'react-native-toast-message';
 
 const Stack = createStackNavigator();
 
@@ -19,6 +20,7 @@ export default function App() {
         <Stack.Screen name ="Registro1" component={Registro1} />
         <Stack.Screen name ="Registro2" component={Registro2} />
       </Stack.Navigator>
+      <Toast ref={(ref) => Toast.setRef(ref)} />
     </NavigationContainer>
   );
 }

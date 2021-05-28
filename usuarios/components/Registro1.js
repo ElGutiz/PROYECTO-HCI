@@ -20,6 +20,16 @@ export default function Login({navigation}) {
     NotoSans_400Regular,
     Mukta_400Regular,
   });
+  
+  const SomeAreasEmptyAlert = () => {
+        Toast.show({
+            text1: 'Falta Informacion',
+            text2: 'Procura que todos los campos esten llenos.',
+            autoHide: true,
+            visibilityTime: 2000,
+            type: 'error',
+        });
+    }
 
   return (
     <View>
@@ -75,7 +85,7 @@ export default function Login({navigation}) {
                     borderRadius: 20,
                     backgroundColor: '#448DDB'
                 }}
-                onPress = {() => {usernameLenght === 0 || passwordLenght === 0 || mailLenght === 0 || biographyLenght === 0 ? createTwoButtonAlert : navigation.navigate('Registro2')}}
+                onPress = {async() => {usernameLenght === 0 || passwordLenght === 0 || mailLenght === 0 || biographyLenght === 0 ? SomeAreasEmptyAlert() : navigation.navigate('Registro2')}}
             />
         </View>
     </View>
