@@ -81,7 +81,7 @@ export default function registro({navigation}){
     <View >
         <View style = {styles.container}>
             <TouchableOpacity onPress = {() => navigation.navigate('Login')}>
-                <Image style ={styles.menu} source={require('../imagenes/Menu.png')}></Image>
+                <Image style ={styles.menu} source={require('../imagenes/flecha.png')}></Image>
             </TouchableOpacity>
             <Text style ={styles.texto}>Chance al Chile</Text>
         </View>
@@ -95,11 +95,11 @@ export default function registro({navigation}){
         </View>
         <View style = {styles.container2}>
             <Text style = {styles.texto2}>Nombre:</Text>
-            <TextInput multiline numberOfLines={2} style={styles.input} onChangeText={onChangeUserName} value={nombre}></TextInput>
+            <TextInput style={styles.input} onChangeText={onChangeUserName} value={nombre}></TextInput>
             <Text style = {styles.texto2}>Correo:</Text>
-            <TextInput multiline numberOfLines={2} style={styles.input} onChangeText={onChangeCorreo} value={correo}></TextInput>
+            <TextInput style={styles.input} onChangeText={onChangeCorreo} value={correo}></TextInput>
             <Text style = {styles.texto2}>Contraseña:</Text>
-            <TextInput multiline numberOfLines={2} style={styles.input} onChangeText={onChangePassword} value={contraseña}></TextInput>
+            <TextInput style={styles.input} onChangeText={onChangePassword} value={contraseña} secureTextEntry={true}></TextInput>
             <View style={styles.container3}>
             <TouchableOpacity
                 activeOpacity={0.8} onPress = {() => Verificar(nombre, correo, contraseña)}>
@@ -128,6 +128,8 @@ const styles = StyleSheet.create({
         width:25,
         height:25,
         marginLeft:10,
+        color:'#f0f0f0',
+        marginTop:5
     },
     container2:{
         flexDirection:'column',
@@ -144,6 +146,7 @@ const styles = StyleSheet.create({
         marginBottom:40,
         marginLeft: 50,
         marginRight: 50,
+        padding:10
     },
     texto2:{
         color:'black',

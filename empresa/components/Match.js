@@ -14,7 +14,7 @@ export default function registro({navigation,route}) {
         <View>
             <View style = {styles.container}>
                 <TouchableOpacity onPress = {() => navigation.navigate('Login')}>
-                    <Image style ={styles.menu} source={require('../imagenes/Menu.png')}></Image>
+                    <Image style ={styles.menu} source={require('../imagenes/flecha.png')}></Image>
                 </TouchableOpacity>
                 <Text style ={styles.texto}>Chance al Chile</Text>
             </View>
@@ -79,6 +79,7 @@ const styles = StyleSheet.create({
         width: 25,
         height: 25,
         marginLeft: 10,
+        marginTop:5,
     },
     icon: {
         resizeMode: "contain",

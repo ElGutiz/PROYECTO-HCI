@@ -45,7 +45,7 @@ export default function Login({ navigation }) {
       <Text style={styles.text}>Username:</Text>
       <TextInput onChangeText = {onChangeUserName} style={styles.input} value={input1}></TextInput>
       <Text style={styles.text}>Password:</Text>
-      <TextInput onChangeText = {onChangePassword} style={styles.input} value={input2}></TextInput>
+      <TextInput onChangeText = {onChangePassword} style={styles.input} value={input2} secureTextEntry={true}></TextInput>
       <TouchableOpacity
         activeOpacity={0.8} onPress={async() => loginEmpresa(input1, input2)} >
         <Text style={styles.login}>LOG IN</Text>
