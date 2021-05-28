@@ -40,8 +40,6 @@ export default function registro({navigation}){
       }
 
     const Verificar = (nombre, correo, contraseña) =>{
-        let reg = /^\w+([.-]?\w+)@\w+([.-]?\w+)(.\w\w+)+$/;
-
         if(nombre === null || correo === null || contraseña === null){
             Toast.show({
                 type:'error',

@@ -18,7 +18,7 @@ export default function registro({navigation,route}) {
                 <Text style ={styles.topbartext}>Chance al Chile</Text>
             </View>
             <View style={styles.list}>
-                <View style={{alignSelf: 'center', borderBottomColor: '#1DCC8B', borderBottomWidth: 1}}>
+                <View style={{alignSelf: 'center', borderBottomColor: '#1DCC8B', borderBottomWidth: 1, width: 320, alignItems: 'center', alignContent: 'center'}}>
                     <FontAwesome5 style={{ alignSelf: 'center', marginBottom: 10 }} name="city" size={24} color="black" />
                     <View style={{flexDirection: 'row', marginBottom: 10}}>
                         <Entypo style={{marginRight: 10}} name="phone" size={20} color="black" />
@@ -30,26 +30,31 @@ export default function registro({navigation,route}) {
                     </View>
                 </View>
                 <View style={{borderBottomColor: '#1DCC8B', borderBottomWidth: 1, marginTop: 20}}>
-                    <View>
+                    <View style={{ marginBottom: 40 }}>
                         <Text style={styles.texto1, { fontWeight: 700 }}>Nombre de la vacante:</Text>
                         <Text style={styles.texto1}>{route.params.data.vacante}</Text>
                     </View>
-                    <View>
+                    <View style={{ marginBottom: 40 }}>
                         <Text style={styles.texto1, { fontWeight: 700 }}>Nombre de la empresa:</Text>
                         <Text style={styles.texto1}>{route.params.data.vacante}</Text>
                     </View>
-                    <View>
+                    <View style={{ marginBottom: 40 }}>
                         <Text style={styles.texto1, { fontWeight: 700 }}>Descripcion de la vacante:</Text>
                         <Text style={styles.texto1}>{route.params.data.descripcion}</Text>
                     </View>
-                    <View>
+                    <View style={{ marginBottom: 40 }}>
                         <Text style={styles.texto1, { fontWeight: 700 }}>Descripcion de la vacante:</Text>
+                        <Text style={styles.texto1}>{route.params.data.descripcion}</Text>
+                    </View>
+                    <View style={{ marginBottom: 40 }}>
+                        <Text style={styles.texto1, { fontWeight: 700 }}>Fecha limite:</Text>
                         <Text style={styles.texto1}>{route.params.data.descripcion}</Text>
                     </View>
                 </View>
             </View>
             <View style={styles.div}>
                 <TouchableOpacity
+                    style={{borderRadius: 6}}
                     activeOpacity={0.8} onPress = {async() => navigation.navigate('Listado')} 
                     onPressOut = {async() => Toast.show({
                         type:'success',
@@ -120,7 +125,7 @@ const styles = StyleSheet.create({
         marginTop: 10,
         alignSelf: 'center',
         paddingVertical:5,
-        borderRadius: 50,
+        borderRadius: 6,
     },
     ff: {
         marginTop: 4

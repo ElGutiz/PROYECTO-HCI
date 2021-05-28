@@ -46,11 +46,10 @@ export default function registro({ navigation, route }) {
                     </TouchableOpacity>
                     <Text style={styles.texto}>Chance al Chile</Text>
                     <View style={styles.container22}>
-                        <TouchableOpacity >
-                            <Image style={styles.menu} source={require('../imagenes/float.png')}></Image>
+                        <TouchableOpacity onPress = {() => navigation.navigate('Vacante')} >
+                            <Image style={styles.menu} source={require('../imagenes/float.png')} ></Image>
                         </TouchableOpacity>
                     </View>
-
                 </View>
             </View>
 
