@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import { StyleSheet, Text, View, Image, TextInput, TouchableOpacity } from 'react-native';
 import { NotoSans_400Regular, useFonts, Mukta_400Regular } from "@expo-google-fonts/dev"; 
+import Toast from 'react-native-toast-message';
 
 export default function Login({navigation}) {
   let [fontsLoaded] = useFonts({
@@ -10,7 +11,16 @@ export default function Login({navigation}) {
 
   const state = {
     logged:false};
-
+  
+  const WrongDataAlert = () => {
+    Toast.show({
+        text1: 'Datos Incorrectos',
+        text2: 'Revise que su informacion es correcta',
+        autoHide: true,
+        visibilityTime: 2000,
+        type: 'error',
+    });
+  }
 
   const loginUser = async(username, password) => {
     const login = await fetch('http://stw-uvg.site:3186/login', {
@@ -23,9 +33,9 @@ export default function Login({navigation}) {
     .then(results => results.json())
     .then((json) => {
       if(json.login === true){
-        navigation.navigate('Registro1');
+        navigation.navigate('Listado');
       }else{
-        //TOAST CON json.mensaje
+        WrongDataAlert();
       }
     });
   };
@@ -44,11 +54,11 @@ export default function Login({navigation}) {
       <Text style={styles.text}>Password:</Text>
       <TextInput onChangeText={onChangePassword} style={styles.input} value={input2}></TextInput>
       <TouchableOpacity
-      activeOpacity={0.8} onPress = {() => loginUser(input1, input2)}>
+        activeOpacity={0.8} onPress = {() => loginUser(input1, input2)}>
         <Text style={styles.login}>LOG IN</Text>
       </TouchableOpacity>
       <TouchableOpacity
-      activeOpacity={0.8} onPress = {() =>navigation.navigate('Registro1') }>
+        activeOpacity={0.8} onPress = {() =>navigation.navigate('Registro1') }>
         <Text style={styles.register}>Register</Text>
       </TouchableOpacity>
     </View>
