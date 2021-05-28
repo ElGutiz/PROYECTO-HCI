@@ -3,7 +3,7 @@ import {StyleSheet, Image, View, Text, TextInput, TouchableOpacity} from 'react-
 import { NotoSans_400Regular, useFonts, Mukta_400Regular, FascinateInline_400Regular } from "@expo-google-fonts/dev";
 import Toast from 'react-native-toast-message';
 
-export default function vacante({navigation}){
+export default function vacante({navigation, route }){
 
     let [fontsLoaded] = useFonts({
         NotoSans_400Regular,
@@ -14,8 +14,38 @@ export default function vacante({navigation}){
     const [detalles, onChangeDetalles] = useState(null);
     const [deadline, onChangeCorreo] = useState(null);
 
+    const CrearVacante = async(nombre, deadline, detalles) =>{
+        const login = await fetch(`http://stw-uvg.site:3186/vacante`, {
+            method:'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'nombre':nombre,
+              'deadline':deadline,
+              'detalles':detalles
+            },
+          }, {mode:'no-cors'})
+          .then(results => results.json())
+          .then((json) => {
+              registroData1.push(json)
+              registroData1[0].nodes.map((data) =>{
+                  registroData.push(data.node.properties)
+              })
+              onChangeData(registroData)
+          });    
+
+
+        Toast.show({
+            type:'success',
+            text1:'Creando Solicitud...',
+            autoHide: true,
+            visibilityTime: 300
+        });
+        navigation.navigate('Listado');
+    }
+
     const Verificar = (nombre, deadline, detalles) =>{
         var reg = /(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](19|20)\d\d/;
+
         if(nombre === null || deadline === null || detalles === null){
             Toast.show({
                 type:'error',
@@ -40,13 +70,7 @@ export default function vacante({navigation}){
                 visibilityTime: 2000
             });
         }else{
-            Toast.show({
-                type:'success',
-                text1:'Creando Solicitud...',
-                autoHide: true,
-                visibilityTime: 300
-            });
-            navigation.navigate('Listado');
+            CrearVacante(nombre, deadline, detalles)
             }   
         }
 
