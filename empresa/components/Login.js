@@ -12,23 +12,42 @@ export default function Login({ navigation }) {
     Mukta_400Regular,
   });
 
-  const loginEmpresa = (username, password) =>{
-    if(username === null || password === null){
-      Credenciales(username, password)
-    }else{
-      navigation.navigate('Listado')
-    }
+  const Credenciales = () =>{
+    Toast.show({
+      type:'error',
+      text1:'ERROR',
+      text2:'Ingrese Credenciales',
+      autoHide: true,
+      visibilityTime: 2000
+    });
   }
 
-  const Credenciales = (username, password) =>{
-      Toast.show({
-        type:'error',
-        text1:'ERROR',
-        text2:'Ingrese credenciales',
-        autoHide: true,
-        visibilityTime: 2000
-      });
-  }
+  const loginEmpresas = async(username, password) => {
+    console.log("hola")
+    const login = await fetch('http://stw-uvg.site:3186/loginEmpresa', {
+      method:'GET',
+      headers: {
+        'usuario':username,
+        'contrasena':password
+      }
+    })
+    .then(results => results.json())
+    .then((json) => {
+      if(json.login === true){
+        console.log("Simon")
+        navigation.navigate('Listado')
+      }else{
+        console.log("Nelson")
+        Toast.show({
+          type:'error',
+          text1:'ERROR',
+          text2:json.message,
+          autoHide: true,
+          visibilityTime: 2000
+        });
+      }
+    });
+  };
 
   const [input1, onChangeUserName] = useState(null);
   const [input2, onChangePassword] = useState(null);
@@ -47,7 +66,7 @@ export default function Login({ navigation }) {
       <Text style={styles.text}>Password:</Text>
       <TextInput onChangeText = {onChangePassword} style={styles.input} value={input2} secureTextEntry={true}></TextInput>
       <TouchableOpacity
-        activeOpacity={0.8} onPress={async() => loginEmpresa(input1, input2)} >
+        activeOpacity={0.8} onPress={async() => input1 === null || input2 === null ? Credenciales() : loginEmpresas(input1, input2)} >
         <Text style={styles.login}>LOG IN</Text>
       </TouchableOpacity>
       <TouchableOpacity
