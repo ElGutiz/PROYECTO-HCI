@@ -12,10 +12,10 @@ export default function Login({navigation}) {
   const state = {
     logged:false};
   
-  const WrongDataAlert = () => {
+  const wrongPasswordAlert = (mensaje) => {
     Toast.show({
-        text1: 'Datos Incorrectos',
-        text2: 'Revise que su informacion es correcta',
+        text1: 'Credenciales incorrectas',
+        text2: mensaje,
         autoHide: true,
         visibilityTime: 2000,
         type: 'error',
@@ -35,7 +35,7 @@ export default function Login({navigation}) {
       if(json.login === true){
         navigation.navigate('Listado');
       }else{
-        WrongDataAlert();
+        wrongPasswordAlert(json.message)
       }
     });
   };
@@ -88,7 +88,7 @@ const styles = StyleSheet.create({
   input:{
     borderWidth:3,
     borderColor:'#f0f0f0',
-    borderRadius:50,
+    borderRadius:6,
     marginBottom:20,
     fontFamily: 'Mukta_400Regular',
     paddingLeft: 10,
@@ -101,11 +101,12 @@ const styles = StyleSheet.create({
     paddingHorizontal: 60,
     marginTop: 10, 
     paddingVertical:5,
-    borderRadius: 50,
+    borderRadius: 6,
   },
   register:{
     fontFamily:'Mukta_400Regular',
     fontStyle:'italic',
+    textDecorationLine: 'underline',
     fontSize:14,
     color:'#f0f0f0',
     marginTop:20,

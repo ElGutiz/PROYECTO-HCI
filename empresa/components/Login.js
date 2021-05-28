@@ -22,9 +22,9 @@ export default function Login({ navigation }) {
     });
   }
 
-  const loginEmpresas = async(username, password) => {
-    console.log("hola")
-    const login = await fetch('http://stw-uvg.site:3186/loginEmpresa',{
+  const loginEmpresa = async(username, password) => {
+    
+    const login = await fetch('http://stw-uvg.site:3186/loginEmpresa', {
       method:'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -35,20 +35,16 @@ export default function Login({ navigation }) {
     .then(results => results.json())
     .then((json) => {
       if(json.login === true){
-        console.log("Simon")
-        navigation.navigate('Listado')
+        console.log("listado")
+        navigation.navigate('Listado');
       }else{
-        console.log("Nelson")
-        Toast.show({
-          type:'error',
-          text1:'ERROR',
-          text2:json.message,
-          autoHide: true,
-          visibilityTime: 2000
-        });
+        WrongDataAlert();
+        console.log("no listado")
       }
     });
+    
   };
+
 
   const [input1, onChangeUserName] = useState(null);
   const [input2, onChangePassword] = useState(null);
@@ -67,7 +63,7 @@ export default function Login({ navigation }) {
       <Text style={styles.text}>Password:</Text>
       <TextInput onChangeText = {onChangePassword} style={styles.input} value={input2} secureTextEntry={true}></TextInput>
       <TouchableOpacity
-        activeOpacity={0.8} onPress={async() => input1 === null || input2 === null ? Credenciales():loginEmpresas(input1, input2)} >
+        activeOpacity={0.8} onPress={async() => loginEmpresa(input1, input2)} >
         <Text style={styles.login}>LOG IN</Text>
       </TouchableOpacity>
       <TouchableOpacity
