@@ -13,7 +13,21 @@ export default function Login({navigation}) {
 
 
   const loginUser = async(username, password) => {
-    navigation.navigate('Registro1')
+    const login = await fetch('http://stw-uvg.site:3186/login', {
+      method:'GET',
+      headers: {
+        'usuario':username,
+        'contrasena':password
+      }
+    })
+    .then(results => results.json())
+    .then((json) => {
+      if(json.login === true){
+        navigation.navigate('Registro1');
+      }else{
+        //TOAST CON json.mensaje
+      }
+    });
   };
 
   const [input1, onChangeUsername] = useState('')
