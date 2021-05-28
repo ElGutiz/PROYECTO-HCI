@@ -1,11 +1,37 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { StyleSheet, Text, View, Image, TextInput, TouchableOpacity } from 'react-native';
 import { NotoSans_400Regular, useFonts, Mukta_400Regular } from "@expo-google-fonts/dev";
+import Toast from 'react-native-toast-message';
+
+
 export default function Login({ navigation }) {
+  
   let [fontsLoaded] = useFonts({
     NotoSans_400Regular,
     Mukta_400Regular,
   });
+
+  const loginEmpresa = (username, password) =>{
+    if(username === null || password === null){
+      Credenciales(username, password)
+    }else{
+      navigation.navigate('Listado')
+    }
+  }
+
+  const Credenciales = (username, password) =>{
+      Toast.show({
+        type:'error',
+        text1:'ERROR',
+        text2:'Ingrese credenciales',
+        autoHide: true,
+        visibilityTime: 2000
+      });
+  }
+
+  const [input1, onChangeUserName] = useState(null);
+  const [input2, onChangePassword] = useState(null);
+
   return (
     <View style={styles.container}>
       <Image
@@ -13,11 +39,11 @@ export default function Login({ navigation }) {
         source={require('../imagenes/Logo.png')}
       />
       <Text style={styles.text}>Username:</Text>
-      <TextInput style={styles.input}></TextInput>
+      <TextInput onChangeText = {onChangeUserName} style={styles.input} value={input1}></TextInput>
       <Text style={styles.text}>Password:</Text>
-      <TextInput style={styles.input}></TextInput>
+      <TextInput onChangeText = {onChangePassword} style={styles.input} value={input2}></TextInput>
       <TouchableOpacity
-        activeOpacity={0.8} onPress={() => navigation.navigate('Listado')} >
+        activeOpacity={0.8} onPress={async() => loginEmpresa(input1, input2)} >
         <Text style={styles.login}>LOG IN</Text>
       </TouchableOpacity>
       <TouchableOpacity

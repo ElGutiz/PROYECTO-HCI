@@ -3,6 +3,7 @@ import { StyleSheet, Image, View, Text, TextInput, TouchableOpacity } from 'reac
 import icono from '../imagenes/UserIcon.png';
 import descarga from '../imagenes/descarga.png';
 import { NotoSans_400Regular, useFonts, Mukta_400Regular } from "@expo-google-fonts/dev";
+import Toast from 'react-native-toast-message';
 export default function registro({navigation}) {
     let [fontsLoaded] = useFonts({
         NotoSans_400Regular,
@@ -49,7 +50,12 @@ export default function registro({navigation}) {
             </View>
             <View style={styles.div}>
                 <TouchableOpacity
-                    activeOpacity={0.8} onPress = {async() => navigation.navigate('Login')} onPressOut = {async() => alert("Chupapi")}>
+                    activeOpacity={0.8} onPress = {async() => navigation.navigate('Listado')} 
+                    onPressOut = {async() => Toast.show({
+                        type:'success',
+                        text1:'Matching Realizado',
+                        visibilityTime:2000,
+                        autoHide:true})}>
                     <Text style={styles.register}>Match</Text>
                 </TouchableOpacity>
             </View>

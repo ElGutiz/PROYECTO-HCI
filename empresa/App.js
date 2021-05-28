@@ -9,6 +9,7 @@ import registro from './components/registro';
 import listado from './components/listado';
 import Match from './components/Match'
 import { HeaderTitle } from '@react-navigation/stack';
+import Toast from 'react-native-toast-message';
 
 const Stack = createStackNavigator();
 
@@ -26,6 +27,7 @@ export default function App() {
         <Stack.Screen name ="Listado" component={listado} />
         <Stack.Screen name ="Match" component={Match} />
       </Stack.Navigator>
+      <Toast ref={(ref) => Toast.setRef(ref)}></Toast>
     </NavigationContainer>
   );
 }
