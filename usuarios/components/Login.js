@@ -58,7 +58,7 @@ export default function Login({navigation}) {
         <Text style={styles.login}>LOG IN</Text>
       </TouchableOpacity>
       <TouchableOpacity
-        activeOpacity={0.8} onPress = {() =>navigation.navigate('Lista') }>
+        activeOpacity={0.8} onPress = {() =>navigation.navigate('Registro1') }>
         <Text style={styles.register}>Register</Text>
       </TouchableOpacity>
     </View>
