@@ -65,28 +65,31 @@ export default function Registro4({navigation, route}) {
                 />
             </View>
             <View style={[styles.container_r]}>
-                <Text style ={styles.text_s}>Currículum Vitae (CV):</Text>
+                <Text style ={styles.text_s}>Subir Currículum Vitae (CV):</Text>
                 <FontAwesome.Button name="upload" backgroundColor='#F0F0F0'
                     style={{
                     width: 100,
                     height: 30,
                     borderRadius: 6,
                     backgroundColor: '#1CCC8B',
-                    paddingLeft: 20,
+                    paddingLeft: 10,
                     alignSelf: 'center',
-                    marginTop: 60,
+                    marginTop: 20,
+                    marginBottom:  40,
                     }}>
                     Upload
                 </FontAwesome.Button>
-                <Text style ={styles.text_s}>Portafolio / Repositorio:</Text>
+                <Text style ={styles.text_s}>Subir Portafolio / Repositorio:</Text>
                 <FontAwesome.Button name="upload" backgroundColor='#F0F0F0'
                     style={{
                     width: 100,
                     height: 30,
                     borderRadius: 6,
+                    paddingLeft: 10,
                     backgroundColor: '#1CCC8B',
                     alignSelf: 'center',
-                    marginTop: 80,
+                    marginTop: 20,
+                    marginBottom:  40,
                 }}>
                     Upload
                 </FontAwesome.Button>
@@ -147,6 +150,8 @@ const styles = StyleSheet.create({
     text_s: {
         marginBottom: 10,
         fontSize: 15,
-        fontFamily: 'Mukta',
+        fontFamily: 'Mukta_400Regular',
+        alignSelf: 'center',
+        marginTop: 20,
     }
 });

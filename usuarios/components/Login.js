@@ -52,13 +52,13 @@ export default function Login({navigation}) {
       <Text style={styles.text}>Username:</Text>
       <TextInput onChangeText={onChangeUsername} style={styles.input} value={input1}></TextInput>
       <Text style={styles.text}>Password:</Text>
-      <TextInput onChangeText={onChangePassword} style={styles.input} value={input2}></TextInput>
+      <TextInput onChangeText={onChangePassword} style={styles.input} value={input2} secureTextEntry={true}></TextInput>
       <TouchableOpacity
         activeOpacity={0.8} onPress = {() => loginUser(input1, input2)}>
         <Text style={styles.login}>LOG IN</Text>
       </TouchableOpacity>
       <TouchableOpacity
-        activeOpacity={0.8} onPress = {() =>navigation.navigate('Registro1') }>
+        activeOpacity={0.8} onPress = {() =>navigation.navigate('Lista') }>
         <Text style={styles.register}>Register</Text>
       </TouchableOpacity>
     </View>
