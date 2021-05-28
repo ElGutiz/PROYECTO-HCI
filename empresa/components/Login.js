@@ -43,7 +43,7 @@ export default function Login({ navigation }) {
         source={require('../imagenes/Logo.png')}
       />
       <Text style={styles.text}>Username:</Text>
-      <TextInput onChangeText = {onChangeUserName} style={styles.input} value={input1} onFocus={() => setFocus(true)}></TextInput>
+      <TextInput onChangeText = {onChangeUserName} style={styles.input} value={input1}></TextInput>
       <Text style={styles.text}>Password:</Text>
       <TextInput onChangeText = {onChangePassword} style={styles.input} value={input2}></TextInput>
       <TouchableOpacity
