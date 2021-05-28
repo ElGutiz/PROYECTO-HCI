@@ -14,8 +14,22 @@ export default function vacante({navigation}){
     const [detalles, onChangeDetalles] = useState(null);
     const [deadline, onChangeCorreo] = useState(null);
 
+    const CrearVacante = (nombre, deadline, detalles){
+        
+
+
+        Toast.show({
+            type:'success',
+            text1:'Creando Solicitud...',
+            autoHide: true,
+            visibilityTime: 300
+        });
+        navigation.navigate('Listado');
+    }
+
     const Verificar = (nombre, deadline, detalles) =>{
         var reg = /(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](19|20)\d\d/;
+
         if(nombre === null || deadline === null || detalles === null){
             Toast.show({
                 type:'error',
@@ -40,13 +54,7 @@ export default function vacante({navigation}){
                 visibilityTime: 2000
             });
         }else{
-            Toast.show({
-                type:'success',
-                text1:'Creando Solicitud...',
-                autoHide: true,
-                visibilityTime: 300
-            });
-            navigation.navigate('Listado');
+            CrearVacante(nombre, deadline, detalles)
             }   
         }
 

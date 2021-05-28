@@ -14,7 +14,6 @@ export default function registro({ navigation, route }) {
     const [datos, onChangeData] = useState([])
 
     const ListaUsers = async() => {
-        console.log("AQUI")
         const login = await fetch(`http://stw-uvg.site:3186/matchusers/${route.params.nombreEmpresa}`, {
           method:'GET',
           headers: {
