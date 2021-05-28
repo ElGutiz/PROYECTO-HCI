@@ -63,14 +63,33 @@ export default function Registro2({route, navigation}) {
         });
     }
 
-    const multipleConditions = () => {
+    const userExists = (usuario) => {
+        Toast.show({
+            text1: 'El usuario '+usuario+' ya existe',
+            text2: 'Por favor ingrese otro nombre o ingrese a su cuenta.',
+            autoHide: true,
+            visibilityTime: 2000,
+            type: 'error',
+        });
+    }
+
+    const multipleConditions = async () => {
         if(usernameLenght === 0 || biographyLenght === 0){
             SomeAreasEmptyAlert();
         }else{
             if(biographyLenght <= 100){
                 BioToShortAlert();
             }else{
-                navigation.navigate('Registro3', {phone:phone, password:password, mail:mail, username:username, biography:biography})
+                const avaibale = await fetch('http://stw-uvg.site:3186/usuario/'+username, { method: 'GET' })
+                    .then(results => results.json())
+                    .then((json) => {
+                        if(json.user === true){
+                            userExists(username);
+                        }else{
+                            navigation.navigate('Registro3', {phone:phone, password:password, mail:mail, username:username, biography:biography});
+                        }
+                    })
+                    .catch((error)=>{console.log(error)});
             }
         }
     };
