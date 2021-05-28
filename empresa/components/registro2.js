@@ -65,7 +65,7 @@ export default function registro2({navigation}){
         <View >
             <View style = {styles.container}>
                 <TouchableOpacity onPress = {() => navigation.navigate('Login')}>
-                    <Image style ={styles.menu} source={require('../imagenes/Menu.png')}></Image>
+                    <Image style ={styles.menu} source={require('../imagenes/flecha.png')}></Image>
                 </TouchableOpacity>
                 <Text style ={styles.texto}>Chance al Chile</Text>
             </View>
@@ -79,7 +79,7 @@ export default function registro2({navigation}){
             </View>
             <View style = {styles.container2}>
                 <Text style = {styles.texto2}>Foto</Text>
-                <TextInput multiline numberOfLines={2} style={styles.input} onChangeText={onChangePhoto} value={foto}></TextInput>
+                <TextInput style={styles.input} onChangeText={onChangePhoto} value={foto}></TextInput>
                 <Text style = {styles.texto2}>Descripción de la empresa</Text>
                 <TextInput multiline numberOfLines={8} style={styles.descripcion} onChangeText={onChangeBio} value={bio}></TextInput>
                 <View style={styles.container3}>
@@ -115,6 +115,7 @@ export default function registro2({navigation}){
             width:25,
             height:25,
             marginLeft:10,
+            marginTop:5,
         },
         container2:{
             flexDirection:'column',
@@ -131,6 +132,7 @@ export default function registro2({navigation}){
             marginBottom:40,
             marginLeft: 50,
             marginRight: 50,
+            padding:5
         },
         texto2:{
             color:'black',
