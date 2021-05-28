@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { StyleSheet, Image, View, Text, TextInput, TouchableOpacity, ScrollView } from 'react-native';
 import { NotoSans_400Regular, useFonts, Mukta_400Regular, ComingSoon_400Regular } from "@expo-google-fonts/dev";
 import Toast from 'react-native-toast-message';
@@ -6,8 +6,11 @@ import Toast from 'react-native-toast-message';
 
 export default function registro({ navigation, route }) {
 
+
     const registroData1 = []
     const registroData = []
+
+    const [datos, onChangeData] = useState([])
 
     const loginEmpresa = async() => {
         console.log("AQUI")
@@ -23,13 +26,7 @@ export default function registro({ navigation, route }) {
             registroData1[0].nodes.map((data) =>{
                 registroData.push(data.node.properties)
             })
-            Toast.show({
-                type:'success',
-                text1:'Recuperando Data...',
-                text2:json.message,
-                autoHide: true,
-                visibilityTime: 1000
-              });
+            onChangeData(registroData)
         });    
       };
 
@@ -56,8 +53,10 @@ export default function registro({ navigation, route }) {
                 </View>
             </View>
 
-            <ScrollView>
-                {registroData.map((item, index) => {
+            <View>
+                {
+                (datos.length === 0) ?
+                datos.map((item, index) => {
                     return (
                         <TouchableOpacity key={index} onPress={() => navigation.navigate('Match', { data: item })}>
                             <View style={styles.list}>
@@ -67,13 +66,10 @@ export default function registro({ navigation, route }) {
                                     <Text style={styles.texto1}>{item.bio}</Text>
                                 </View>
                             </View>
-
                         </TouchableOpacity>
                     );
-                })}
-                
-            </ScrollView>
-               
+                }):return(<Text>No hay usuarios que hagan MATCH</Text>)}
+            </View>
         </View>
     );
 }
