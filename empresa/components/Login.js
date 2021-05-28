@@ -24,13 +24,14 @@ export default function Login({ navigation }) {
 
   const loginEmpresas = async(username, password) => {
     console.log("hola")
-    const login = await fetch('http://stw-uvg.site:3186/loginEmpresa', {
+    const login = await fetch('http://stw-uvg.site:3186/loginEmpresa',{
       method:'GET',
       headers: {
-        'usuario':username,
+        'Content-Type': 'application/json',
+        'nombre':username,
         'contrasena':password
       }
-    })
+    }, {mode:'no-cors'})
     .then(results => results.json())
     .then((json) => {
       if(json.login === true){
@@ -66,7 +67,7 @@ export default function Login({ navigation }) {
       <Text style={styles.text}>Password:</Text>
       <TextInput onChangeText = {onChangePassword} style={styles.input} value={input2} secureTextEntry={true}></TextInput>
       <TouchableOpacity
-        activeOpacity={0.8} onPress={async() => input1 === null || input2 === null ? Credenciales() : loginEmpresas(input1, input2)} >
+        activeOpacity={0.8} onPress={async() => input1 === null || input2 === null ? Credenciales():loginEmpresas(input1, input2)} >
         <Text style={styles.login}>LOG IN</Text>
       </TouchableOpacity>
       <TouchableOpacity
