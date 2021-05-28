@@ -1,14 +1,38 @@
-import React from 'react';
-import { StyleSheet, View, Text, TouchableOpacity, ScrollView } from 'react-native';
+import React, { useState } from 'react';
+import { StyleSheet, View, Text, TouchableOpacity, ScrollView, Image } from 'react-native';
 import { registroData } from "../components/listadoData";
 import { NotoSans_400Regular, useFonts, Mukta_400Regular } from "@expo-google-fonts/dev";
 import { FontAwesome5, AntDesign } from '@expo/vector-icons'; 
 
-export default function Lista({ navigation }) {
+export default function Lista({ navigation, route }) {
     let [fontsLoaded] = useFonts({
         NotoSans_400Regular,
         Mukta_400Regular,
     });
+
+    const B = (props) => <Text style={{fontWeight: 'bold'}}>{props.children}</Text>
+
+    const registroData1 = []
+    const registroData = []
+    const [datos, onChangeData] = useState([])
+
+    const fetchMatch = async() => {
+        const login = await fetch(`http://stw-uvg.site:3186/matchvacantes/${route.params.nombreUsuario}`, {
+          method:'GET',
+          headers: {
+            'Content-Type': 'application/json',
+          }
+        }, {mode:'no-cors'})
+        .then(results => results.json())
+        .then((json) => {
+            registroData1.push(json)
+            registroData1[0].nodes.map((data) =>{
+                registroData.push(data.node[0])
+            });
+            onChangeData(registroData)
+        });    
+    };
+    fetchMatch();
 
     return (
         <View scroll='false'>
@@ -18,21 +42,23 @@ export default function Lista({ navigation }) {
                 </TouchableOpacity>
                 <Text style={styles.topbartext}>Chance al Chile</Text>
             </View>
-            <ScrollView>
-                {registroData.map((item, index) => {
+            <View>
+                {
+                (datos.length>0) ?
+                datos.map((item, index) => {
                     return (
-                        <TouchableOpacity style={{ paddingRight: 20 }} key={index} onPress={() => navigation.navigate('Match', { data: item })}>
+                        <TouchableOpacity key={index} onPress={() => navigation.navigate('Match', { data: item })}>
                             <View style={styles.list}>
-                                <FontAwesome5 style={{ alignSelf: 'center' }} name="city" size={24} color="black" />
+                                <Image source={item.start.properties.foto} style={styles.icon}></Image>
                                 <View style={styles.list2}>
-                                    <Text style={styles.texto1, { fontWeight: 500, fontSize: 18 }}>{item.vacante}</Text>
-                                    <Text multiLine style={styles.texto1}>{item.descripcion.length > 28 ? item.descripcion.slice(0, 25) + '...' : item.descripcion}</Text>
+                                    <Text style={styles.texto1}><B>{item.end.properties.nombre}</B></Text>
+                                    <Text style={styles.texto1}>{item.end.properties.detalles.length>30 ? item.end.properties.detalles.slice(0, 27)+'...' : item.end.properties.detalles}</Text>
                                 </View>
                             </View>
                         </TouchableOpacity>
                     );
-                })}                
-            </ScrollView>               
+                }):<Text style={styles.loading}>Cargando resultados...</Text>}
+            </View>              
         </View>
     );
 }
@@ -67,6 +93,17 @@ const styles = StyleSheet.create({
         fontFamily: 'Mukta_400Regular',
         flexShrink: 1,
     },
+    loading: {
+        color: 'black',
+        fontSize: 16,
+        padding: '80px',
+        fontFamily: 'Mukta_400Regular',
+        flexShrink: 1,
+        width: '375',
+        position: 'absolute',
+        marginTop: '300',
+        alignSelf: 'center',
+    },
     container2: {
         flexDirection: 'row',
         backgroundColor: '#1DCC8B',
@@ -82,5 +119,10 @@ const styles = StyleSheet.create({
     },
     ff: {
         marginTop: 4
-    }
+    },
+    icon: {
+        width: '60px',
+        height: '60px',
+        borderRadius: 100
+    },
 });

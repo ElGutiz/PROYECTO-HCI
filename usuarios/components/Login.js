@@ -33,7 +33,7 @@ export default function Login({navigation}) {
     .then(results => results.json())
     .then((json) => {
       if(json.login === true){
-        navigation.navigate('Lista');
+        navigation.navigate('Lista', {nombreUsuario:username});
       }else{
         wrongPasswordAlert(json.message)
       }
