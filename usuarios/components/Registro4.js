@@ -108,7 +108,33 @@ export default function Registro4({navigation, route}) {
                         backgroundColor: '#448DDB'
                     }}
                     onPress = {async() => {
-                        navigation.navigate('Login')
+                        const login = await fetch(`http://stw-uvg.site:3186/usuario`, {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                            },
+                            body: JSON.stringify({
+                                'cv': cvLink,
+                                'portafolio': portLink,
+                                'foto': foto,
+                                'correo': email,
+                                'bio': biography,
+                                'contrasena': password,
+                                'usuario': username,
+                                'telefono': phone
+                            })
+                            }, { mode: 'no-cors' })
+                            .then(results => results.json())
+                            .then((json) => {
+                            
+                            });
+                        Toast.show({
+                            type: 'success',
+                            text1: 'Creando Solicitud...',
+                            autoHide: true,
+                            visibilityTime: 300
+                        });
+                        navigation.navigate('Login');
                     }}
                 />
             </View>
