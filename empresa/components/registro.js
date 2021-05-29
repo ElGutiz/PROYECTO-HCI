@@ -3,6 +3,7 @@ import {StyleSheet, Image, View, Text, TextInput, TouchableOpacity} from 'react-
 import { NotoSans_400Regular, useFonts, Mukta_400Regular } from "@expo-google-fonts/dev";
 import StepIndicator from 'react-native-step-indicator';
 import Toast from 'react-native-toast-message';
+import { Ionicons, Foundation, FontAwesome,AntDesign } from '@expo/vector-icons';
 
 export default function registro({navigation}){
     let [fontsLoaded] = useFonts({
@@ -40,6 +41,7 @@ export default function registro({navigation}){
       }
 
     const Verificar = (nombre, correo, contraseña) =>{
+        let reg = /^\w+([.-]?\w+)@\w+([.-]?\w+)(.\w\w+)+$/;
         if(nombre === null || correo === null || contraseña === null){
             Toast.show({
                 type:'error',
@@ -71,7 +73,7 @@ export default function registro({navigation}){
                     autoHide: true,
                     visibilityTime: 300
                 });
-                navigation.navigate('Registro2');
+                navigation.navigate('Registro2',{nombre:nombre,correo:correo,contra:contraseña});
             }   
         }
     }
@@ -79,7 +81,7 @@ export default function registro({navigation}){
     <View >
         <View style = {styles.container}>
             <TouchableOpacity onPress = {() => navigation.navigate('Login')}>
-                <Image style ={styles.menu} source={require('../imagenes/flecha.png')}></Image>
+                <AntDesign name="back" size={27} color="white"/>
             </TouchableOpacity>
             <Text style ={styles.texto}>Chance al Chile</Text>
         </View>
