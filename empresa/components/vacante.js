@@ -98,7 +98,7 @@ const customStyles = {
                 visibilityTime: 2000
             });
         }else{
-            navigation.navigate('vacante2', {nombre:nombre, deadline:deadline, detalles, empresa:route.params.nombreEmpresa});
+            navigation.navigate('Vacante2', {nombre:nombre, deadline:deadline, detalles, empresa:route.params.nombreEmpresa});
             }   
         }
 
