@@ -7,6 +7,8 @@ import TagInput from 'react-native-tags-input';
 import * as Font from 'expo-font'; 
 import AppLoading from 'expo-app-loading';
 import StepIndicator from 'react-native-step-indicator';
+//import { route } from "../../server/src/routes/index.routes";
+import Toast from 'react-native-toast-message';
 
 const mainColor = '#1CCC8B';
 const labels = ["Creación de Solicitud","Tags"];
@@ -129,16 +131,52 @@ export default class vacante2 extends React.Component {
                                     borderRadius: 6,
                                     backgroundColor: '#448DDB'
                                 }}
-                                onPress = {async() => this.props.navigation.navigate('Listado', 
-                                {
-                                    phone:this.state.phone, 
-                                    password:this.state.password, 
-                                    mail:this.state.mail,
-                                    username:this.state.username,
-                                    biography:this.state.biography,
-                                    selectedLanguage: this.state.selectedLanguage,
-                                    tagsArray: this.state.tags.tagsArray
-                                })}
+                                onPress = {async() => {
+                                    const addVacante = await fetch(`http://stw-uvg.site:3186/vacante`, {
+                                        method: 'POST',
+                                        headers: {
+                                            'Content-Type': 'application/json',
+                                        },
+                                        body: JSON.stringify({
+                                            'nombre': this.props.route.params.nombre,
+                                            'detalles': this.props.route.params.detalles,
+                                            'deadline': this.props.route.params.deadline,
+                                            'empresa': this.props.route.params.nombreEmpresa
+                                        })
+                                        }, { mode: 'no-cors' })
+                                        .then(results => results.json())
+                                        .then((json) => {
+                                            this.state.tags.tagsArray.forEach(element => {
+                                                const addTags = fetch(`http://stw-uvg.site:3186/requisitos`, {
+                                                    method: 'POST',
+                                                    headers: {
+                                                        'Content-Type': 'application/json',
+                                                    },
+                                                    body: JSON.stringify({
+                                                        'vacante': this.props.route.params.nombre,
+                                                        'tag': element
+                                                    })
+                                                    }, { mode: 'no-cors' })
+                                                    .then(results => results.json())
+                                                    .then((json) => {
+                                                        Toast.show({
+                                                            type: 'success',
+                                                            text1: 'Creando Solicitud...',
+                                                            autoHide: true,
+                                                            visibilityTime: 300
+                                                        });
+                                                        Toast.show({
+                                                            type: 'success',
+                                                            text1: 'Creando Solicitud...',
+                                                            autoHide: true,
+                                                            visibilityTime: 300
+                                                        });
+                                                        this.props.navigation.navigate('Listado');
+                                                    });
+                                            });
+                                        });
+                                    //this.props.navigation.navigate('Listado')
+                                }}
                             />
                         </View>
                     </View>
