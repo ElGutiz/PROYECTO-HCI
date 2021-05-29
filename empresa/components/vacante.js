@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import {StyleSheet, Image, View, Text, TextInput, TouchableOpacity} from 'react-native';
 import { NotoSans_400Regular, useFonts, Mukta_400Regular, FascinateInline_400Regular } from "@expo-google-fonts/dev";
 import Toast from 'react-native-toast-message';
+import StepIndicator from 'react-native-step-indicator';
 
 export default function vacante({navigation, route }){
 
@@ -9,6 +10,31 @@ export default function vacante({navigation, route }){
         NotoSans_400Regular,
         Mukta_400Regular,
     });
+
+    const labels = ["Creación de Solicitud","Tags"];
+const customStyles = {
+    stepIndicatorSize: 25,
+    currentStepIndicatorSize:30,
+    separatorStrokeWidth: 2,
+    currentStepStrokeWidth: 3,
+    stepStrokeCurrentColor: '#1DCC8B',
+    stepStrokeWidth: 3,
+    stepStrokeFinishedColor: '#1DCC8B',
+    stepStrokeUnFinishedColor: '#aaaaaa',
+    separatorFinishedColor: '#1DCC8B',
+    separatorUnFinishedColor: '#aaaaaa',
+    stepIndicatorFinishedColor: '#1DCC8B',
+    stepIndicatorUnFinishedColor: '#ffffff',
+    stepIndicatorCurrentColor: '#ffffff',
+    stepIndicatorLabelFontSize: 13,
+    currentStepIndicatorLabelFontSize: 13,
+    stepIndicatorLabelCurrentColor: '#1DCC8B',
+    stepIndicatorLabelFinishedColor: '#ffffff',
+    stepIndicatorLabelUnFinishedColor: '#aaaaaa',
+    labelColor: '#999999',
+    labelSize: 13,
+    currentStepLabelColor: '#1DCC8B',
+};
 
     const [nombre, onChangeUserName] = useState(null);
     const [detalles, onChangeDetalles] = useState(null);
@@ -21,7 +47,8 @@ export default function vacante({navigation, route }){
               'Content-Type': 'application/json',
               'nombre':nombre,
               'deadline':deadline,
-              'detalles':detalles
+              'detalles':detalles,
+              'empresa': route.params.nombreEmpresa
             },
           }, {mode:'no-cors'})
           .then(results => results.json())
@@ -40,7 +67,7 @@ export default function vacante({navigation, route }){
             autoHide: true,
             visibilityTime: 300
         });
-        navigation.navigate('Listado');
+
     }
 
     const Verificar = (nombre, deadline, detalles) =>{
@@ -70,7 +97,7 @@ export default function vacante({navigation, route }){
                 visibilityTime: 2000
             });
         }else{
-            CrearVacante(nombre, deadline, detalles)
+            navigation.navigate('vacante2', {nombre:nombre, deadline:deadline, detalles, empresa:route.params.nombreEmpresa});
             }   
         }
 
@@ -82,6 +109,14 @@ export default function vacante({navigation, route }){
                 </TouchableOpacity>
                 <Text style ={styles.texto}>Chance al Chile</Text>
             </View>
+            <View style = {styles.stepIndicatorContainer}>
+                        <StepIndicator
+                            customStyles={customStyles}
+                            currentPosition={0}
+                            labels={labels}
+                            stepCount={2}
+                        />
+                    </View>
             <View style = {styles.container2}>
                 <Text style = {styles.texto2}>Nombre:</Text>
                 <TextInput style={styles.input} onChangeText={onChangeUserName} value={nombre} placeholder={'Nombre de la solicitud'}></TextInput>
@@ -92,7 +127,7 @@ export default function vacante({navigation, route }){
                 <View style={styles.container3}>
                 <TouchableOpacity
                     activeOpacity={0.8} onPress = {() => Verificar(nombre, deadline, detalles)}>
-                    <Text style={styles.register}>Crear Vacante</Text>
+                    <Text style={styles.register}>Next</Text>
                 </TouchableOpacity>
                 </View>
             </View>
