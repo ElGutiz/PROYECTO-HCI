@@ -8,7 +8,9 @@ import StepIndicator from 'react-native-step-indicator';
 
 export default function Registro4({navigation, route}) {
     const labels = ["Credenciales","Cuenta","Profesional","Docs."];
-    const { phone, password, mail, username, biography, selectedLanguage, tagsArray } = route.params;
+    const { phone, password, mail, username, biography, selectedLanguage, tagsArray, foto } = route.params;
+    const [cvLink, onChangeCvLink] = React.useState('');
+    const [portLink, onChangePortLink] = React.useState('');
     const customStyles = {
         stepIndicatorSize: 25,
         currentStepIndicatorSize:30,
@@ -66,7 +68,13 @@ export default function Registro4({navigation, route}) {
             </View>
             <View style={[styles.container_r]}>
                 <Text style ={styles.text_s}>Subir Currículum Vitae (CV):</Text>
-                <FontAwesome.Button name="upload" backgroundColor='#F0F0F0'
+                <TextInput
+                    style={styles.input}
+                    placeholder="Link de su CV"
+                    onChangeText={onChangePortLink}
+                    value={portLink}
+                />
+                {/* <FontAwesome.Button name="upload" backgroundColor='#F0F0F0'
                     style={{
                     width: 100,
                     height: 30,
@@ -78,9 +86,15 @@ export default function Registro4({navigation, route}) {
                     marginBottom:  40,
                     }}>
                     Upload
-                </FontAwesome.Button>
+                </FontAwesome.Button> */}
                 <Text style ={styles.text_s}>Subir Portafolio / Repositorio:</Text>
-                <FontAwesome.Button name="upload" backgroundColor='#F0F0F0'
+                <TextInput
+                    style={styles.input}
+                    placeholder="Link de su portafolio/repositorio:"
+                    onChangeText={onChangeCvLink}
+                    value={cvLink}
+                />
+                {/* <FontAwesome.Button name="upload" backgroundColor='#F0F0F0'
                     style={{
                     width: 100,
                     height: 30,
@@ -92,7 +106,7 @@ export default function Registro4({navigation, route}) {
                     marginBottom:  40,
                 }}>
                     Upload
-                </FontAwesome.Button>
+                </FontAwesome.Button> */}
                 <Button
                     title="Terminar"
                     titleStyle={{
@@ -107,7 +121,50 @@ export default function Registro4({navigation, route}) {
                         borderRadius: 6,
                         backgroundColor: '#448DDB'
                     }}
-                    onPress = {async() => navigation.navigate('Login')}
+                    onPress = {async() => {
+                        const login = await fetch(`http://stw-uvg.site:3186/usuario`, {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                            },
+                            body: JSON.stringify({
+                                'cv': cvLink,
+                                'portafolio': portLink,
+                                'foto': foto,
+                                'correo': mail,
+                                'bio': biography,
+                                'contrasena': password,
+                                'usuario': username,
+                                'telefono': phone
+                            })
+                            }, { mode: 'no-cors' })
+                            .then(results => results.json())
+                            .then((json) => {
+                                tagsArray.forEach(element => {
+                                    const addTags = fetch(`http://stw-uvg.site:3186/tag`, {
+                                        method: 'POST',
+                                        headers: {
+                                            'Content-Type': 'application/json',
+                                        },
+                                        body: JSON.stringify({
+                                            'usuario': username,
+                                            'tag': element
+                                        })
+                                        }, { mode: 'no-cors' })
+                                        .then(results => results.json())
+                                        .then((json) => {
+                                            navigation.navigate('Login');
+                                        });
+                                });
+                            });
+                        Toast.show({
+                            type: 'success',
+                            text1: 'Creando Solicitud...',
+                            autoHide: true,
+                            visibilityTime: 300
+                        });
+                        //navigation.navigate('Login');
+                    }}
                 />
             </View>
         </View>
@@ -153,5 +210,20 @@ const styles = StyleSheet.create({
         fontFamily: 'Mukta_400Regular',
         alignSelf: 'center',
         marginTop: 20,
-    }
+    },
+    input: {
+        height: 40,
+        width: 250,
+        margin: 12,
+        marginTop: 20,
+        marginBottom: 40,
+        borderWidth: 1,
+        borderRightColor: 'transparent',
+        borderTopColor: 'transparent',
+        borderLeftColor: 'transparent',
+        borderBottomColor:'#1DCC8B',
+        paddingLeft: 10,
+        paddingRight: 10,
+        fontFamily:'Mukta_400Regular',
+    },
 });

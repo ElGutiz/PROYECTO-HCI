@@ -1,13 +1,14 @@
 import React from "react";
-import { StyleSheet, TextInput, View, Text, TouchableOpacity, Alert } from "react-native";
+import { StyleSheet, TextInput, View, Text, TouchableOpacity, Alert, Image } from "react-native";
 import { Button } from 'react-native-elements';
-import { AntDesign } from '@expo/vector-icons';
+import { AntDesign, FontAwesome } from '@expo/vector-icons';
 import { NotoSans_400Regular, useFonts, Mukta_400Regular } from "@expo-google-fonts/dev"; 
 import Toast from 'react-native-toast-message';
 import StepIndicator from 'react-native-step-indicator';
 
 export default function Registro2({route, navigation}) {
     const { phone, password, mail } = route.params;
+    const [foto, onChangeFoto] = React.useState('https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Circle-icons-profile.svg/1200px-Circle-icons-profile.svg.png');
     const [username, onChangeUsername] = React.useState('');
     const [biography, onChangeBiography] = React.useState('');
     const labels = ["Credenciales","Cuenta","Profesional","Docs."];
@@ -86,7 +87,7 @@ export default function Registro2({route, navigation}) {
                         if(json.user === true){
                             userExists(username);
                         }else{
-                            navigation.navigate('Registro3', {phone:phone, password:password, mail:mail, username:username, biography:biography});
+                            navigation.navigate('Registro3', {phone:phone, password:password, mail:mail, username:username, biography:biography, foto:foto});
                         }
                     })
                     .catch((error)=>{console.log(error)});
@@ -111,6 +112,13 @@ export default function Registro2({route, navigation}) {
                 />
             </View>
             <View style={styles.Form}>
+                <Image source={foto} style={styles.icon}></Image>
+                <TextInput
+                    style={styles.input}
+                    onChangeText={onChangeFoto}
+                    value={foto}
+                    placeholder="URL Foto de perfil:"
+                />
                 <TextInput
                     style={styles.input}
                     onChangeText={onChangeUsername}
@@ -174,7 +182,7 @@ const styles = StyleSheet.create({
         fontFamily:'Mukta_400Regular',
     },
     Bio: {
-        height: 240,
+        minHeight: 90,
         width: 250,
         margin: 12,
         marginTop: 40,
@@ -203,4 +211,17 @@ const styles = StyleSheet.create({
         marginTop: 20,
         marginHorizontal: 50
     },
+    icon: {
+        width: '60px',
+        height: '60px',
+        marginTop: 20,
+        borderRadius: 100
+    },
+    text_s: {
+        marginBottom: 10,
+        fontSize: 15,
+        fontFamily: 'Mukta_400Regular',
+        alignSelf: 'center',
+        marginTop: 20,
+    }
 });
