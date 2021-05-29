@@ -131,7 +131,7 @@ export default function Registro4({navigation, route}) {
                                 'cv': cvLink,
                                 'portafolio': portLink,
                                 'foto': foto,
-                                'correo': email,
+                                'correo': mail,
                                 'bio': biography,
                                 'contrasena': password,
                                 'usuario': username,
