@@ -140,7 +140,22 @@ export default function Registro4({navigation, route}) {
                             }, { mode: 'no-cors' })
                             .then(results => results.json())
                             .then((json) => {
-                            
+                                tagsArray.forEach(element => {
+                                    const addTags = fetch(`http://stw-uvg.site:3186/tag`, {
+                                        method: 'POST',
+                                        headers: {
+                                            'Content-Type': 'application/json',
+                                        },
+                                        body: JSON.stringify({
+                                            'usuario': username,
+                                            'tag': element
+                                        })
+                                        }, { mode: 'no-cors' })
+                                        .then(results => results.json())
+                                        .then((json) => {
+                                            navigation.navigate('Login');
+                                        });
+                                });
                             });
                         Toast.show({
                             type: 'success',
@@ -148,7 +163,7 @@ export default function Registro4({navigation, route}) {
                             autoHide: true,
                             visibilityTime: 300
                         });
-                        navigation.navigate('Login');
+                        //navigation.navigate('Login');
                     }}
                 />
             </View>
