@@ -39,11 +39,27 @@ export default function Registro4({navigation, route}) {
         NotoSans_400Regular,
         Mukta_400Regular,
     });
+
+    const validarURL = (str) => {
+        const patron = new RegExp("^(?:http(s)?:\\/\\/)?[\\w.-]+(?:\\.[\\w\\.-]+)+[\\w\\-\\._~:/?#[\\]@!\\$&'\\(\\)\\*\\+,;=.]+$");
+        console.log(patron.test(str));
+        return patron.test(str);
+    }
     
     const SomeAreasEmptyAlert = () => {
         Toast.show({
             text1: 'Falta Informacion',
             text2: 'Procura que todos los campos esten llenos.',
+            autoHide: true,
+            visibilityTime: 2000,
+            type: 'error',
+        });
+    }
+
+    const malURL = (txt) => {
+        Toast.show({
+            text1: 'URL no válida',
+            text2: 'Su enlace de'+txt+'no está disponible.',
             autoHide: true,
             visibilityTime: 2000,
             type: 'error',
@@ -122,47 +138,56 @@ export default function Registro4({navigation, route}) {
                         backgroundColor: '#448DDB'
                     }}
                     onPress = {async() => {
-                        const login = await fetch(`http://stw-uvg.site:3186/usuario`, {
-                            method: 'POST',
-                            headers: {
-                                'Content-Type': 'application/json',
-                            },
-                            body: JSON.stringify({
-                                'cv': cvLink,
-                                'portafolio': portLink,
-                                'foto': foto,
-                                'correo': mail,
-                                'bio': biography,
-                                'contrasena': password,
-                                'usuario': username,
-                                'telefono': phone
-                            })
-                            }, { mode: 'no-cors' })
-                            .then(results => results.json())
-                            .then((json) => {
-                                tagsArray.forEach(element => {
-                                    const addTags = fetch(`http://stw-uvg.site:3186/tag`, {
-                                        method: 'POST',
-                                        headers: {
-                                            'Content-Type': 'application/json',
-                                        },
-                                        body: JSON.stringify({
-                                            'usuario': username,
-                                            'tag': element
-                                        })
-                                        }, { mode: 'no-cors' })
-                                        .then(results => results.json())
-                                        .then((json) => {
-                                            navigation.navigate('Login');
+                        if(validarURL(cvLink)){
+                            if(validarURL(portLink)){
+                                const login = await fetch(`http://stw-uvg.site:3186/usuario`, {
+                                    method: 'POST',
+                                    headers: {
+                                        'Content-Type': 'application/json',
+                                    },
+                                    body: JSON.stringify({
+                                        'cv': cvLink,
+                                        'portafolio': portLink,
+                                        'foto': foto,
+                                        'correo': mail,
+                                        'bio': biography,
+                                        'contrasena': password,
+                                        'usuario': username,
+                                        'telefono': phone
+                                    })
+                                    }, { mode: 'no-cors' })
+                                    .then(results => results.json())
+                                    .then((json) => {
+                                        tagsArray.forEach(element => {
+                                            const addTags = fetch(`http://stw-uvg.site:3186/tag`, {
+                                                method: 'POST',
+                                                headers: {
+                                                    'Content-Type': 'application/json',
+                                                },
+                                                body: JSON.stringify({
+                                                    'usuario': username,
+                                                    'tag': element
+                                                })
+                                                }, { mode: 'no-cors' })
+                                                .then(results => results.json())
+                                                .then((json) => {
+                                                    Toast.show({
+                                                        type: 'success',
+                                                        text1: 'Creando Solicitud...',
+                                                        autoHide: true,
+                                                        visibilityTime: 300
+                                                    });
+                                                    navigation.navigate('Login');
+                                                });
                                         });
-                                });
-                            });
-                        Toast.show({
-                            type: 'success',
-                            text1: 'Creando Solicitud...',
-                            autoHide: true,
-                            visibilityTime: 300
-                        });
+                                    });
+                            }else{
+                                malURL(' portafolio ')
+                            }
+                        }else{
+                            malURL(' cv ')
+                        }
+                        
                         //navigation.navigate('Login');
                     }}
                 />
