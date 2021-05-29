@@ -8,7 +8,7 @@ import StepIndicator from 'react-native-step-indicator';
 
 export default function Registro4({navigation, route}) {
     const labels = ["Credenciales","Cuenta","Profesional","Docs."];
-    const { phone, password, mail, username, biography, selectedLanguage, tagsArray } = route.params;
+    const { phone, password, mail, username, biography, selectedLanguage, tagsArray, foto } = route.params;
     const customStyles = {
         stepIndicatorSize: 25,
         currentStepIndicatorSize:30,
@@ -107,7 +107,9 @@ export default function Registro4({navigation, route}) {
                         borderRadius: 6,
                         backgroundColor: '#448DDB'
                     }}
-                    onPress = {async() => navigation.navigate('Login')}
+                    onPress = {async() => {
+                        navigation.navigate('Login')
+                    }}
                 />
             </View>
         </View>

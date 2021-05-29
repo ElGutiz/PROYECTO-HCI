@@ -53,6 +53,7 @@ export default class Registro3 extends React.Component {
             mail: props.route.params.mail,
             username: props.route.params.username,
             biography: props.route.params.biography,
+            foto: props.route.params.foto
         };
     }
        
@@ -151,7 +152,8 @@ export default class Registro3 extends React.Component {
                                     username:this.state.username,
                                     biography:this.state.biography,
                                     selectedLanguage: this.state.selectedLanguage,
-                                    tagsArray: this.state.tags.tagsArray
+                                    tagsArray: this.state.tags.tagsArray,
+                                    foto: this.state.foto
                                 })}
                             />
                         </View>
