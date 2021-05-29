@@ -3,6 +3,7 @@ import {StyleSheet, Image, View, Text, TextInput, TouchableOpacity} from 'react-
 import { NotoSans_400Regular, useFonts, Mukta_400Regular, FascinateInline_400Regular } from "@expo-google-fonts/dev";
 import Toast from 'react-native-toast-message';
 import StepIndicator from 'react-native-step-indicator';
+import { AntDesign } from '@expo/vector-icons';
 
 export default function vacante({navigation, route }){
 
@@ -105,7 +106,7 @@ const customStyles = {
         <View >
             <View style = {styles.container}>
                 <TouchableOpacity onPress = {() => navigation.navigate('Listado')}>
-                    <Image style ={styles.menu} source={require('../imagenes/flecha.png')}></Image>
+                    <AntDesign name="back" size={27} color="white"/>
                 </TouchableOpacity>
                 <Text style ={styles.texto}>Chance al Chile</Text>
             </View>
