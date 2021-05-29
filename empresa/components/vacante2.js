@@ -9,7 +9,7 @@ import AppLoading from 'expo-app-loading';
 import StepIndicator from 'react-native-step-indicator';
 
 const mainColor = '#1CCC8B';
-const labels = ["Cuenta","Datos","Profesional","Docs."];
+const labels = ["Creación de Solicitud","Tags"];
 const customStyles = {
     stepIndicatorSize: 25,
     currentStepIndicatorSize:30,
@@ -88,26 +88,12 @@ export default class vacante2 extends React.Component {
                     <View style = {styles.stepIndicatorContainer}>
                         <StepIndicator
                             customStyles={customStyles}
-                            currentPosition={2}
+                            currentPosition={1}
                             labels={labels}
-                            stepCount={4}
+                            stepCount={2}
                         />
                     </View>
                     <View style={styles.container_c_m}>
-                        <View style={[styles.containerP, {transform: [{ translateY: 20 }]}]}>
-                            <Text style={styles.text_s}>Escoge tu carrera</Text>
-                            <Picker
-                                style={styles.picker_s}
-                                selectedValue={this.selectedLanguage}
-                                onValueChange={(itemValue, itemIndex) =>
-                                    this.setState({selectedLanguage: itemValue})
-                                }>
-                                <Picker.Item label="Ingenieria en Sistemas" value="ies" />
-                                <Picker.Item label="Robotica" value="robo" />
-                                <Picker.Item label="Ingenieria en Alimentos" value="iea" />
-                                <Picker.Item label="Administracion de empresas" value="ade" />
-                            </Picker>
-                        </View>
                         <Text>{JSON.stringify(this.state.nameffr)}</Text>
                         <View style={[styles.container, {transform: [{ translateY: 150 }]}]} >
                             <TagInput
@@ -131,7 +117,7 @@ export default class vacante2 extends React.Component {
                         </View>
                         <View style={[{transform: [{ translateY: 400 }]}]}>
                             <Button
-                                title="Siguiente"
+                                title="Registrar"
                                 titleStyle={{
                                     color: '#fff',
                                     fontSize: 16, 
@@ -143,7 +129,7 @@ export default class vacante2 extends React.Component {
                                     borderRadius: 6,
                                     backgroundColor: '#448DDB'
                                 }}
-                                onPress = {async() => this.props.navigation.navigate('Registro4', 
+                                onPress = {async() => this.props.navigation.navigate('Listado', 
                                 {
                                     phone:this.state.phone, 
                                     password:this.state.password, 
