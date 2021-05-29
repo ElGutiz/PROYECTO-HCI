@@ -46,7 +46,7 @@ export default function registro({ navigation, route }) {
                     </TouchableOpacity>
                     <Text style={styles.texto}>Chance al Chile</Text>
                     <View style={styles.container22}>
-                        <TouchableOpacity onPress = {() => navigation.navigate('Vacante')} >
+                        <TouchableOpacity onPress = {() => navigation.navigate('Vacante', {empresa: route.params.nombreEmpresa})} >
                             <AntDesign name="pluscircleo" size={24} color="white" />
                         </TouchableOpacity>
                     </View>
