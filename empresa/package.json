@@ -26,7 +26,11 @@
     "react-native-step-indicator": "^1.0.3",
     "react-native-toast-message": "^1.4.9",
     "react-native-unimodules": "~0.13.3",
-    "react-native-web": "~0.13.12"
+    "react-native-web": "~0.13.12",
+    "react-native-elements": "^3.4.1",
+    "@react-native-picker/picker": "^1.16.1",
+    "react-native-tags-input": "^1.0.10",
+    "expo-app-loading": "^1.0.3"
   },
   "devDependencies": {
     "@babel/core": "^7.14.3"

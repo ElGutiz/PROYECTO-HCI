@@ -10,6 +10,7 @@ import registro2 from './components/registro2';
 import listado from './components/listado';
 import Match from './components/Match';
 import vacante from './components/vacante'
+import vacante2 from './components/vacante2'
 import { HeaderTitle } from '@react-navigation/stack';
 import Toast from 'react-native-toast-message';
 
@@ -26,6 +27,7 @@ export default function App() {
       >
         <Stack.Screen name ="Login" component={Login} />
         <Stack.Screen name ="Vacante" component={vacante} />
+        <Stack.Screen name ="Vacante2" component={vacante2} />
         <Stack.Screen name ="Registro" component={registro} />
         <Stack.Screen name="Registro2" component={registro2}/>
         <Stack.Screen name ="Listado" component={listado} />
